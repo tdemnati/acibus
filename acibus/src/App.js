@@ -63,7 +63,6 @@ class App extends react.Component {
             <h4>Default</h4>
             <br/>
             <ButtonGroup toggle className="mb">
-            <br/>
         {radios.map((radio, idx) => (
           <ToggleButton
             key={idx}
