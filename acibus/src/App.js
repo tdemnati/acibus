@@ -8,7 +8,6 @@ import ToggleButton from 'react-bootstrap/ToggleButton'
 
 const TEXT = `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
 
-
 const TAG_COLORS = {
   OB1: '#84d2ff',
   OB2: '#84d2ff',
