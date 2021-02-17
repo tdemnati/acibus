@@ -1,0 +1,10 @@
+[
+    {
+      "value": [{"start": 17, "end": 19, "tag": "OBJECT1"}],
+      "tag": "OBJECT1"
+    },
+    {
+        "value": [{"start": 20, "end": 30, "tag": "OBJECT2"}],
+        "tag": "OBJECT2"
+      }
+]
