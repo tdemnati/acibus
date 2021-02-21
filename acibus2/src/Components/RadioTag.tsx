@@ -9,7 +9,7 @@ class RadioTag extends React.Component{
         <MyContext.Consumer>
                     {(context)=> (
                         <div>
-                        {context.state.radios1.map((tag, idx) => (
+                        {context.state.tagList.map(({tag}, idx) => (
                             <label key={idx}>
                             <input
                                 type="radio"
@@ -26,7 +26,9 @@ class RadioTag extends React.Component{
                         <button onClick={context.addTag}>Add</button>
                         <button onClick={context.resetTag}>Reset</button>
                         </div>}
+                    <div>{JSON.stringify(context.state.tagList.find(el => el.tag == context.state.tag).color, null, 2)}</div>
                         </div> 
+                        
                     )}
         </MyContext.Consumer>
     )

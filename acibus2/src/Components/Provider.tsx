@@ -6,30 +6,38 @@ class Provider extends React.Component{
   state = {
     value: [{start: 17, end: 19, tag: 'OBJECT_1'}],
     tag: 'OBJECT_1',
-    radios1 : ['OBJECT_1','OBJECT_2', 'RELATION'],
-    newtag:'TAG',
-    isEditTag: true,
+    tagList : [
+                {tag:'OBJECT_1',
+                color:'#ffe184'},
+                {tag:'OBJECT_2',
+                color:'#ffe184'},
+                {tag:'RELATION',
+                color:'#d2afe9'},
+    ],
+    newtag:{tag: 'TAG',color:'#ffe184'},
+    isEditTag: true
   }
   //Preserve state for reser
-  initialRadios1 = [...this.state.radios1];
+  initialtagList = [...this.state.tagList];
   render() {
 return (
 <MyContext.Provider value={{
   state: this.state,
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},
-  addTag: () => {this.setState({radios1: [...this.state.radios1, this.state.newtag]})},
+  addTag: () => {this.setState({tagList: [...this.state.tagList, this.state.newtag]})},
   resetTag: () => {
-    this.setState({radios1: this.initialRadios1});
+    this.setState({tagList: this.initialtagList});
     console.log("State is: " + JSON.stringify(this.state));
   },
-  onInputChange: e =>{this.setState({newtag: e.target.value})},
+  onInputChange: e =>{this.setState({newtag: {tag: e.target.value, color: ""}})},
   deleteItem: (e) =>{
-    var array = [...this.state.radios1];
-    var index = array.indexOf(e.target.value);
+    var array = [...this.state.tagList];
+    var index = array.findIndex(el => el.tag == e.target.value);
+    console.log("The array is:" + array)
     if (index !==-1){
       array.splice(index,1);
-      this.setState({radios1: array});
+      this.setState({tagList: array});
       console.log("Value is: " + e.target.value);
     } 
   },

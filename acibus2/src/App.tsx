@@ -3,16 +3,12 @@ import './App.css';
 import {TokenAnnotator} from './Annotator';
 import MyContext from './Components/Provider';
 import {Provider} from './Components/Provider';
+import TextContext from './Components/TextProvider';
+import {TextProvider} from './Components/TextProvider';
 import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 
-const TEXT = `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
-
-const TAG_COLORS = {
-  OB1: '#ffe184',
-  OB2: '#ffe184',
-  REL: 'rgb(98, 95, 250)'
-}
+//const TEXT = `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
 
 const Card = ({children}) => (
   <div
@@ -33,6 +29,7 @@ class App extends React.Component<any, any> {
 
     return (
     <div>
+      <TextProvider>
       <Provider>
         <div>
           <h3>ACIBUS</h3>
@@ -48,6 +45,8 @@ class App extends React.Component<any, any> {
         <div>
           <Card>
             <h4>Text</h4>
+            <TextContext.Consumer>
+            {(textcontext)=> (
             <MyContext.Consumer>
               {(context)=> (
               <TokenAnnotator
@@ -56,30 +55,33 @@ class App extends React.Component<any, any> {
                     maxWidth: 500,
                     lineHeight: 1.5,
                   }}
-                  tokens={TEXT.split(' ')}
+                  tokens={textcontext.state.TEXT.split(' ')}
                   value={context.state.value}
                   onChange={context.onSelectText}
                   getSpan={span => ({
                     ...span,
                     tag: context.state.tag,
-                    color: TAG_COLORS[context.state.tag],
-                  })}
+                    color: context.state.tagList.find(el => el.tag === context.state.tag).color,
+                  }
+                   )}
                 />
               )}
             </MyContext.Consumer>
+            )}</TextContext.Consumer>
           </Card>
           <Card>
             <MyContext.Consumer>  
               {(context)=> (
                 <>
                   <h4>Output</h4>
-                  <pre>{JSON.stringify([...context.state.value, {text: TEXT}], null, 2)}</pre>
+                  <pre>{JSON.stringify(context.state.value, null, 2)}</pre>
                 </>
               )}
             </MyContext.Consumer>
           </Card>
         </div>
       </Provider>
+      </TextProvider>
     </div>
     )
   }
