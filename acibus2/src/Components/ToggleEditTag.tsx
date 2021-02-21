@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MyContext from './Provider';
+import MyContext from '../Providers/Provider';
 
 class ToggleEditTag extends React.Component{
     
@@ -14,4 +14,4 @@ class ToggleEditTag extends React.Component{
 
   }
   
-  export default ToggleEditTag;
+export default ToggleEditTag;

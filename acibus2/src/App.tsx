@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './App.css';
-import {TokenAnnotator} from './Annotator';
-import MyContext from './Components/Provider';
-import {Provider} from './Components/Provider';
-import TextContext from './Components/TextProvider';
-import {TextProvider} from './Components/TextProvider';
+import MyContext from './Providers/Provider';
+import {Provider} from './Providers/Provider';
+import {TextProvider} from './Providers/TextProvider';
 import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
+import Annotate from './Components/Annotate';
+import Save from './Components/Save';
 
 //const TEXT = `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
 
@@ -15,8 +15,8 @@ const Card = ({children}) => (
     style={{
       boxShadow: '0 2px 4px rgba(0,0,0,.1)',
       margin: 6,
-      maxWidth: 500,
       padding: 16,
+      backgroundColor: 'white',
     }}
   >
     {children}
@@ -31,54 +31,37 @@ class App extends React.Component<any, any> {
     <div>
       <TextProvider>
       <Provider>
-        <div>
-          <h3>ACIBUS</h3>
-          <a href="http://a-cibus.com">Acibus</a>
-          <p>A React component for interactively highlighting parts of text.</p>
-          <h4>Edit tags</h4>
+      <div id="wrapper">
+    
+        <div id="sidebar">
+          <div id="title">
+          <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
+          </div>
+          <div className="section">
+          <p>Select Text File</p>
+          {/* todo */}
+          </div>
+          <div className="section">
+          <p>Edit tags</p>
           <ToggleEditTag/>
+          </div>
+        </div>
+
+        <div id="main">
           <Card>
-            <h4>Tags</h4>
+            <h4>Choose a Tag</h4>
             <RadioTag/>
           </Card>
+          <Card>
+            <h4>Annotate Text</h4>
+            <Annotate/>
+          </Card>
+          <Card>
+            <h4>Save Output</h4>
+            <Save/>
+          </Card>
         </div>
-        <div>
-          <Card>
-            <h4>Text</h4>
-            <TextContext.Consumer>
-            {(textcontext)=> (
-            <MyContext.Consumer>
-              {(context)=> (
-              <TokenAnnotator
-                  style={{
-                    fontFamily: 'IBM Plex Sans',
-                    maxWidth: 500,
-                    lineHeight: 1.5,
-                  }}
-                  tokens={textcontext.state.TEXT.split(' ')}
-                  value={context.state.value}
-                  onChange={context.onSelectText}
-                  getSpan={span => ({
-                    ...span,
-                    tag: context.state.tag,
-                    color: context.state.tagList.find(el => el.tag === context.state.tag).color,
-                  }
-                   )}
-                />
-              )}
-            </MyContext.Consumer>
-            )}</TextContext.Consumer>
-          </Card>
-          <Card>
-            <MyContext.Consumer>  
-              {(context)=> (
-                <>
-                  <h4>Output</h4>
-                  <pre>{JSON.stringify(context.state.value, null, 2)}</pre>
-                </>
-              )}
-            </MyContext.Consumer>
-          </Card>
+
         </div>
       </Provider>
       </TextProvider>

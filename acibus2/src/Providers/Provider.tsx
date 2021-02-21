@@ -33,7 +33,7 @@ return (
   onInputChange: e =>{this.setState({newtag: {tag: e.target.value, color: ""}})},
   deleteItem: (e) =>{
     var array = [...this.state.tagList];
-    var index = array.findIndex(el => el.tag == e.target.value);
+    var index = array.findIndex(el => el.tag === e.target.value);
     console.log("The array is:" + array)
     if (index !==-1){
       array.splice(index,1);

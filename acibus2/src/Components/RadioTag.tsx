@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MyContext from './Provider';
+import MyContext from '../Providers/Provider';
 
 
 class RadioTag extends React.Component{
@@ -26,7 +26,7 @@ class RadioTag extends React.Component{
                         <button onClick={context.addTag}>Add</button>
                         <button onClick={context.resetTag}>Reset</button>
                         </div>}
-                    <div>{JSON.stringify(context.state.tagList.find(el => el.tag == context.state.tag).color, null, 2)}</div>
+                    <div>{JSON.stringify(context.state.tagList.find(el => el.tag === context.state.tag).color, null, 2)}</div>
                         </div> 
                         
                     )}
