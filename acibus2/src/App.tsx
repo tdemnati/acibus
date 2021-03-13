@@ -32,7 +32,6 @@ class App extends React.Component<any, any> {
       <TextProvider>
       <Provider>
       <div id="wrapper">
-    
         <div id="sidebar">
           <div id="title">
           <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>

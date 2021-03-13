@@ -4,14 +4,14 @@ const MyContext = React.createContext(undefined!);
 
 class Provider extends React.Component{
   state = {
-    value: [{start: 17, end: 19, tag: 'OBJECT_1'}],
-    tag: 'OBJECT_1',
+    value: [{start: 17, end: 19, tag: 'SBJ'}],
+    tag: 'SBJ',
     tagList : [
-                {tag:'OBJECT_1',
+                {tag:'SBJ',
                 color:'#ffe184'},
-                {tag:'OBJECT_2',
+                {tag:'OBJ',
                 color:'#ffe184'},
-                {tag:'RELATION',
+                {tag:'REL',
                 color:'#d2afe9'},
     ],
     newtag:{tag: 'TAG',color:'#ffe184'},
