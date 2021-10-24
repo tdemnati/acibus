@@ -77,7 +77,7 @@ state = {
             <h4>Choose a Tag</h4>
             <RadioTag/>
           </Card>
-          <StructuredContentProvider structuredContentId="64431">
+          <StructuredContentProvider structuredContentId={this.state.myStructuredContentID}>
           <Card>
             <h4>Annotate Text</h4>
             <AnnotateText/>
