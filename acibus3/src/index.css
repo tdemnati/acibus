@@ -46,47 +46,10 @@ code {
 }
 
 .section {
+  display: flex;
   border-bottom: 1px solid #384451;
   margin-bottom: 17.5px;
   padding: 0 17.5px 20px 17.5px;
   color:#d6d2d2;
   justify-content: space-between;
-
-}
-
-.settings {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-.settings-btn {
-  height:30px;
-  cursor: pointer;
-}
-
-.mylist {
-  cursor: pointer;
-overflow: hidden;
-min-width: 0;
-text-align: left;
-white-space: nowrap;
-padding-right: 10px;
-text-overflow: ellipsis;
-}
-
-h3 {
-  color: #FFF;
-}
-
-ul {
-  display:flexbox;
-  text-decoration: none;
-  list-style-type: none;
-  padding-left: 0%;
-}
-
-input {
-  cursor: pointer;
 }

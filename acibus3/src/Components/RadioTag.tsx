@@ -22,7 +22,7 @@ class RadioTag extends React.Component{
                         ))}
                         <br/>
                         {context.state.isEditTag ? "": <div>
-                        <input type="text" onChange={context.onInputChange}/>
+                        <input type='text' onChange={context.onInputChange}/>
                         <button onClick={context.addTag}>Add</button>
                         <button onClick={context.resetTag}>Reset</button>
                         </div>}

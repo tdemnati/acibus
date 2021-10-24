@@ -3,8 +3,6 @@ import * as React from 'react';
 const TextContext = React.createContext(undefined!);
 
 class TextProvider extends React.Component{
-
-  
   state = {
     TEXT: `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
   }
@@ -16,6 +14,7 @@ return (
   }}>
   {this.props.children}
 </TextContext.Provider>
+
 )
 
 

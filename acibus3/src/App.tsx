@@ -1,13 +1,14 @@
 import * as React from 'react';
 import './App.css';
+import MyContext from './Providers/Provider';
 import {Provider} from './Providers/Provider';
-import {ContentProvider} from './Providers/ContentProvider';
-
+import {TextProvider} from './Providers/TextProvider';
 import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
-import AnnotateText from './Components/AnnotateText';
-import {GetStructuredContents} from './Providers/StructuredContentsProvider';
-import StructuredContentProvider from './Providers/StructuredContentProvider';
+import Annotate from './Components/Annotate';
+import Save from './Components/Save';
+
+//const TEXT = `On Monday night , Mr. Fallon will have a co-host for the first time : The rapper Cardi B , who just released her first album, " Invasion of Privacy . "`
 
 const Card = ({children}) => (
   <div
@@ -16,7 +17,6 @@ const Card = ({children}) => (
       margin: 6,
       padding: 16,
       backgroundColor: 'white',
-      width: 500,
     }}
   >
     {children}
@@ -24,26 +24,12 @@ const Card = ({children}) => (
 )
 
 class App extends React.Component<any, any> {
-  
-state = {
-      myStructuredContentID: '42',
-      TEXT: 'My text APP'
-    }
-
-  handleIdChange = (newId, newTitle) => {
-    this.setState({myStructuredContentID: newId});
-    this.setState({TEXT: newTitle});
-    console.log('my Structured Content ID is: ' + newId);
-    console.log('my Title is: ' + newTitle);
-  }
 
   render() {
 
     return (
-      
     <div>
-
-      <ContentProvider>
+      <TextProvider>
       <Provider>
       <div id="wrapper">
         <div id="sidebar">
@@ -51,25 +37,13 @@ state = {
           <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
           </div>
           <div className="section">
-          <h3>DATA SET</h3>
           <p>Select Text File</p>
           {/* todo */}
           </div>
           <div className="section">
-          
-          <h3>SETTINGS</h3>
-          <div className="settings">
           <p>Edit tags</p>
           <ToggleEditTag/>
           </div>
-          </div>
-          <div className="section">
-            <h3>MY CONTENT</h3>
-            <ul>
-              <GetStructuredContents handleIdChange={this.handleIdChange} />)
-            </ul>
-          </div>
-          
         </div>
 
         <div id="main">
@@ -77,24 +51,19 @@ state = {
             <h4>Choose a Tag</h4>
             <RadioTag/>
           </Card>
-          <StructuredContentProvider structuredContentId="64431">
           <Card>
             <h4>Annotate Text</h4>
-            <AnnotateText/>
+            <Annotate/>
           </Card>
-          </StructuredContentProvider>
           <Card>
-            <h4>Annotate Text 2</h4>
-            
+            <h4>Save Output</h4>
+            <Save/>
           </Card>
         </div>
 
-        
         </div>
       </Provider>
-      </ContentProvider>
-      
-      
+      </TextProvider>
     </div>
     )
   }

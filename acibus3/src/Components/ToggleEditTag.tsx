@@ -7,7 +7,7 @@ class ToggleEditTag extends React.Component{
         return (
             <MyContext.Consumer>
             {(context)=> (
-            <button className="settings-btn" onClick={context.toggleEditTag}>{context.state.isEditTag ? "Edit" : "Unedit"}</button>)}
+            <button onClick={context.toggleEditTag}>{context.state.isEditTag ? "Edit" : "Unedit"}</button>)}
             </MyContext.Consumer>
     )
     }

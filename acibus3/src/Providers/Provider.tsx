@@ -17,7 +17,7 @@ class Provider extends React.Component{
     newtag:{tag: 'TAG',color:'#ffe184'},
     isEditTag: true
   }
-  //Set initial taglist state
+  //Preserve state for reser
   initialtagList = [...this.state.tagList];
   render() {
 return (
@@ -41,7 +41,7 @@ return (
       console.log("Value is: " + e.target.value);
     } 
   },
-  toggleEditTag: () => {
+  toggleEditTag: (previousState) => {
     this.setState({isEditTag: !this.state.isEditTag});
     console.log("Edit status is: " + this.state.isEditTag)
     }
