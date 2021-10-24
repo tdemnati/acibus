@@ -6,7 +6,7 @@ import {ContentProvider} from './Providers/ContentProvider';
 import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
-import {GetStructuredContents} from './Providers/StructuredContentsProvider';
+import StructuredContentList from './Components/StructuredContentList';
 import StructuredContentProvider from './Providers/StructuredContentProvider';
 
 const Card = ({children}) => (
@@ -66,7 +66,7 @@ state = {
           <div className="section">
             <h3>MY CONTENT</h3>
             <ul>
-              <GetStructuredContents handleIdChange={this.handleIdChange} />)
+              <StructuredContentList structuredContentId={undefined}/>)
             </ul>
           </div>
           
@@ -77,12 +77,10 @@ state = {
             <h4>Choose a Tag</h4>
             <RadioTag/>
           </Card>
-          <StructuredContentProvider structuredContentId={this.state.myStructuredContentID}>
           <Card>
             <h4>Annotate Text</h4>
             <AnnotateText/>
           </Card>
-          </StructuredContentProvider>
           <Card>
             <h4>Annotate Text 2</h4>
             
