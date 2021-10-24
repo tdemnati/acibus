@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const MyContext = React.createContext(undefined!);
+const TagContext = React.createContext(undefined!);
 
 class TagProvider extends React.Component{
   state = {
@@ -19,9 +19,9 @@ class TagProvider extends React.Component{
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
-  render() {
+  render() { 
 return (
-<MyContext.Provider value={{
+<TagContext.Provider value={{
   state: this.state,
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},
@@ -47,7 +47,7 @@ return (
     }
   }}>
   {this.props.children}
-</MyContext.Provider>
+</TagContext.Provider>
 
 )
 
@@ -55,7 +55,7 @@ return (
 
 }
 
-export default MyContext;
+export default TagContext;
 
 export {TagProvider};
 
