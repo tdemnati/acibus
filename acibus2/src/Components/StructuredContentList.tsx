@@ -55,10 +55,6 @@ const withStructuredContents = graphql<InputProps, Response>(GET_STRUCTURED_CONT
   );
 
 class StructuredContentList extends React.Component<ChildProps<InputProps, Response>, {}> {
-  state = {
-    StructuredContentID: '42',
-    TEXT: 'This is the My TEXT'
-  }
 
   render(){
     const { loading, error, structuredContents } = this.props.data;
@@ -66,21 +62,20 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
     if (error) return <h1>ERROR</h1>;
     
     return (
-    
+      <ContentContext.Consumer>
+      {(contentcontext)=> (
       structuredContents.items.map(({ id, title, contentFields}) => (
-  
-      <li key={id}>
-        {/* {id}: {title} */}
-        {contentFields.map((d) => (
-        <p key={d.contentFieldValue.data} className="mylist">
-          {d.contentFieldValue.data}
-        </p>))}
-        
-      </li>
-      
-    ))
-  
-    )
+            <li key={id}>
+              {/* {id}: {title} */}
+              {contentFields.map((d) => (
+              <p key={id} onClick={contentcontext.newtext} className="mylist">
+                {d.contentFieldValue.data}
+              </p>))}
+            </li>
+          )))
+          }
+      </ContentContext.Consumer>
+        )
   }
 }
 

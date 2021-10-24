@@ -1,6 +1,5 @@
 import * as React from 'react';
 import MyContext from '../Providers/TagProvider';
-import {TokenAnnotator} from '../Annotator';
 import ContentContext from '../Providers/ContentProvider';
 
 

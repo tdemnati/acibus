@@ -7,6 +7,7 @@ import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
+import Save from './Components/Save';
 
 const Card = ({children}) => (
   <div
@@ -23,18 +24,6 @@ const Card = ({children}) => (
 )
 
 class App extends React.Component<any, any> {
-  
-state = {
-      myStructuredContentID: '42',
-      TEXT: 'My text APP'
-    }
-
-  handleIdChange = (newId, newTitle) => {
-    this.setState({myStructuredContentID: newId});
-    this.setState({TEXT: newTitle});
-    console.log('my Structured Content ID is: ' + newId);
-    console.log('my Title is: ' + newTitle);
-  }
 
   render() {
 
@@ -81,12 +70,10 @@ state = {
             <AnnotateText/>
           </Card>
           <Card>
-            <h4>Annotate Text 2</h4>
-            
+            <h4>Annotate Text</h4>
+            <Save/>
           </Card>
         </div>
-
-        
         </div>
       </TagProvider>
       </ContentProvider>

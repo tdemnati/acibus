@@ -1,12 +1,12 @@
 import * as React from 'react';
-import MyContext from '../Providers/TagProvider';
+import TagContext from '../Providers/TagProvider';
 
 
 class RadioTag extends React.Component{
     
     render() {
         return (
-        <MyContext.Consumer>
+        <TagContext.Consumer>
                     {(context)=> (
                         <div>
                         {context.state.tagList.map(({tag}, idx) => (
@@ -30,7 +30,7 @@ class RadioTag extends React.Component{
                         </div> 
                         
                     )}
-        </MyContext.Consumer>
+        </TagContext.Consumer>
     )
     }
     

@@ -16,8 +16,9 @@ return (
   <ContentContext.Provider 
     value={{
       state: this.state,
-      newtext: () => {
-        this.setState({TEXT: 'This is the NEW TEXT'});
+      newtext: (e) => {
+        this.setState({TEXT: e.target.outerText});
+        console.log(e.target.outerText);
      },
       }}>
     {this.props.children};
