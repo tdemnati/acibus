@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const MyContext = React.createContext(undefined!);
 
-class Provider extends React.Component{
+class TagProvider extends React.Component{
   state = {
     value: [{start: 17, end: 19, tag: 'SBJ'}],
     tag: 'SBJ',
@@ -57,7 +57,7 @@ return (
 
 export default MyContext;
 
-export {Provider};
+export {TagProvider};
 
 
 

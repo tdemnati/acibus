@@ -1,13 +1,12 @@
 import * as React from 'react';
 import './App.css';
-import {Provider} from './Providers/Provider';
+import {TagProvider} from './Providers/TagProvider';
 import {ContentProvider} from './Providers/ContentProvider';
 
 import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
-import StructuredContentProvider from './Providers/StructuredContentProvider';
 
 const Card = ({children}) => (
   <div
@@ -44,7 +43,7 @@ state = {
     <div>
 
       <ContentProvider>
-      <Provider>
+      <TagProvider>
       <div id="wrapper">
         <div id="sidebar">
           <div id="title">
@@ -89,7 +88,7 @@ state = {
 
         
         </div>
-      </Provider>
+      </TagProvider>
       </ContentProvider>
       
       
