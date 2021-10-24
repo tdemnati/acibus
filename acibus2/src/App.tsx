@@ -70,7 +70,7 @@ class App extends React.Component<any, any> {
             <AnnotateText/>
           </Card>
           <Card>
-            <h4>Annotate Text</h4>
+            <h4>Save</h4>
             <Save/>
           </Card>
         </div>

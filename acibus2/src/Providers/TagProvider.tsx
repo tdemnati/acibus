@@ -4,7 +4,7 @@ const TagContext = React.createContext(undefined!);
 
 class TagProvider extends React.Component{
   state = {
-    value: [{start: 17, end: 19, tag: 'SBJ'}],
+    value: [{}],
     tag: 'SBJ',
     tagList : [
                 {tag:'SBJ',

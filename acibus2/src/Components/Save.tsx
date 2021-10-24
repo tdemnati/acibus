@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MyContext from '../Providers/TagProvider';
+import TagContext from '../Providers/TagProvider';
 import ContentContext from '../Providers/ContentProvider';
 
 
@@ -8,13 +8,13 @@ class Save extends React.Component{
         return (
         <ContentContext.Consumer>
           {(textcontext)=> (
-        <MyContext.Consumer>  
+        <TagContext.Consumer>  
           {(context)=> (
             <>
-              <pre>{JSON.stringify([...context.state.value, textcontext.state.TEXT], null, 2)}</pre>
+              <p>{JSON.stringify([...context.state.value, textcontext.state.TEXT], null, 2)}</p>
             </>
           )}
-        </MyContext.Consumer>)}
+        </TagContext.Consumer>)}
         </ContentContext.Consumer>
         )
     }
