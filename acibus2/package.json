@@ -22,6 +22,7 @@
     "react-powerplug": "^1.0.0",
     "react-scripts": "4.0.1",
     "typescript": "^4.0.3",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

@@ -2,18 +2,27 @@ import React from "react";
 import { gql } from "@apollo/client";
 import { graphql, ChildProps } from "@apollo/react-hoc";
 import ContentContext from '../Providers/ContentProvider';
-
+import { v4 as uuidv4 } from 'uuid';
 
 const GET_STRUCTURED_CONTENTS = gql`
 query {
   structuredContents(siteKey: "42754") {
+    totalCount
     items {
       id
       title
       contentFields {
+        label
         contentFieldValue {
           data
+          
         }
+nestedContentFields {
+        contentFieldValue {
+          data
+          
+        }
+}
       }
     }
   }
@@ -68,7 +77,7 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
             <li key={id}>
               {/* {id}: {title} */}
               {contentFields.map((d) => (
-              <p key={id} onClick={contentcontext.newtext} className="mylist">
+              <p key={uuidv4()} onClick={contentcontext.newtext} className="mylist">
                 {d.contentFieldValue.data}
               </p>))}
             </li>

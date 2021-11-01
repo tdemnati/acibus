@@ -15,6 +15,7 @@ interface TokenSpan {
   tokens: string[]
 }
 
+
 const Token: React.FC<TokenProps> = props => {
   return <span data-i={props.i}>{props.content} </span>
 }
