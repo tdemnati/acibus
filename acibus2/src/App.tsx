@@ -54,7 +54,7 @@ class App extends React.Component<any, any> {
           <div className="section">
             <h3>MY CONTENT</h3>
             <ul>
-              <StructuredContentList structuredContentId={undefined}/>)
+              <StructuredContentList structuredContentId={undefined}/>
             </ul>
           </div>
           
