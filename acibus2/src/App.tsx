@@ -77,11 +77,9 @@ class App extends React.Component<any, any> {
         </div>
       </TagProvider>
       </ContentProvider>
-      
-      
     </div>
     )
   }
 }
 
-export default App;
+export default App

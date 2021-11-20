@@ -20,4 +20,4 @@ class Save extends React.Component{
     }
 }
 
-export default Save;
+export default Save

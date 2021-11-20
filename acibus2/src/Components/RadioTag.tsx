@@ -36,4 +36,4 @@ class RadioTag extends React.Component{
     
   }
   
-  export default RadioTag;
+  export default RadioTag

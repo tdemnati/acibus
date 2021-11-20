@@ -97,4 +97,4 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
   }
 }
 
-export default withStructuredContents(StructuredContentList);
+export default withStructuredContents(StructuredContentList)

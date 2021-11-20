@@ -21,13 +21,13 @@ ReactDOM.render(
   <React.StrictMode>
   <ApolloProvider client={client}>
     <App />
-  </ApolloProvider>,
+  </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
-);
+)
 
 // If you want to start mea suring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()
 
