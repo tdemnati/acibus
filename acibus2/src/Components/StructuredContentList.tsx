@@ -71,9 +71,14 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
     if (error) return <h1>ERROR</h1>;
     
     return (
+      
+        
       <ContentContext.Consumer>
+      
       {(contentcontext)=> (
-      structuredContents.items.map(({ id, title, contentFields}) => (
+      <div>
+        <button>Reset</button>
+      {structuredContents.items.map(({ id, title, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
               {contentFields.map((d) => (
@@ -81,9 +86,13 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
                 {d.contentFieldValue.data}
               </p>))}
             </li>
-          )))
+          ))
+      }
+          </div>
+          )
           }
       </ContentContext.Consumer>
+      
         )
   }
 }

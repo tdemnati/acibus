@@ -20,7 +20,7 @@ return (
         this.setState({TEXT: e.target.outerText});
         this.setState({StructuredContentID: '5426'});
         console.log('The Text is: ' + e.target.outerText);
-        console.log('The ID is: ' + e);
+        console.log('The ID is: ' + e.target.innerHTML);
      },
       }}>
     {this.props.children};
