@@ -18,9 +18,9 @@ return (
       state: this.state,
       newtext: (e) => {
         this.setState({TEXT: e.target.outerText});
-        this.setState({StructuredContentID: '5426'});
+        this.setState({StructuredContentID: e.target.id});
         console.log('The Text is: ' + e.target.outerText);
-        console.log('The ID is: ' + e.target.innerHTML);
+        console.log('The ID is: ' + e.target.id);
      }
       }}>
     {this.props.children}
