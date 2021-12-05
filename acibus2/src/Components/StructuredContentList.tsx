@@ -76,9 +76,10 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
       <ContentContext.Consumer>
       
       {(contentcontext)=> (
+        
       <div>
-        <button>Reset</button>
-      {structuredContents.items.map(({ id, title, contentFields}) => (
+        <button onClick={() => contentcontext.setlist(structuredContents)}>Show list</button>
+              {structuredContents.items.map(({ id, title, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
               {contentFields.map((d) => (

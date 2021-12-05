@@ -40,14 +40,14 @@ class App extends React.Component<any, any> {
           </div>
           <div className="section">
           <h3>DATA SET</h3>
-          <p>Select Text File</p>
+          <p className="settingsLabel">Select Text File</p>
           {/* todo */}
           </div>
           <div className="section">
           
           <h3>SETTINGS</h3>
           <div className="settings">
-          <p>Edit tags</p>
+          <p className="settingsLabel">Edit tags</p>
           <ToggleEditTag/>
           </div>
           </div>
