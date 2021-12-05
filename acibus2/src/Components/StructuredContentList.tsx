@@ -49,10 +49,15 @@ nestedContentFields {
 
   type ContentFields = {
     contentFieldValue: ContentFieldValue;
+    nestedContentFields: [NestedContentFields];
   }
   
   type ContentFieldValue = {
     data: string;
+  }
+
+  type NestedContentFields = {
+    contentFieldValue: ContentFieldValue;
   }
 
 const withStructuredContents = graphql<InputProps, Response>(GET_STRUCTURED_CONTENTS, {
@@ -85,6 +90,10 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
               {contentFields.map((d) => (
               <p id={id.toString()} key={uuidv4()} onClick={contentcontext.newtext} className="mylist">
                 {d.contentFieldValue.data}
+                {d.nestedContentFields.map((d) => (
+              <span id={id.toString()} key={uuidv4()} className="mylist">
+                {d.contentFieldValue.data}
+              </span>))}
               </p>))}
             </li>
           ))
