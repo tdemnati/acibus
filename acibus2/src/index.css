@@ -82,6 +82,13 @@ text-align: left;
 white-space: nowrap;
 padding-right: 10px;
 text-overflow: ellipsis;
+margin-top: 2px;
+margin-bottom: 2px;
+
+}
+
+.myhiddenlist {
+display: none;
 }
 
 h3 {

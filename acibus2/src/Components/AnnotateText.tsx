@@ -18,8 +18,8 @@ class AnnotateText extends React.Component<any, any>{
                     lineHeight: 1.5,
                   }}
                   tokens={contentcontext.state.TEXT.split(' ')}
-                  value={context.state.value}
-                  onChange={context.onSelectText}
+                  value={contentcontext.state.value}
+                  onChange={contentcontext.onSelectText}
                   getSpan={span => ({
                     ...span,
                     tag: context.state.tag,

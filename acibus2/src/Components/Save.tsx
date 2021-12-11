@@ -7,14 +7,9 @@ class Save extends React.Component{
     render() {
         return (
         <ContentContext.Consumer>
-          {(textcontext)=> (
-        <TagContext.Consumer>  
-          {(context)=> (
-            <>
-              <p>{JSON.stringify([...context.state.value, textcontext.state.TEXT], null, 2)}</p>
-            </>
-          )}
-        </TagContext.Consumer>)}
+          {(contentcontext)=> (
+              <p>{JSON.stringify([...contentcontext.state.value], null, 2)}</p>    
+        )}
         </ContentContext.Consumer>
         )
     }

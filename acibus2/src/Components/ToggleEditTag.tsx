@@ -1,14 +1,14 @@
 import * as React from 'react';
-import MyContext from '../Providers/TagProvider';
+import TagContext from '../Providers/TagProvider';
 
 class ToggleEditTag extends React.Component{
     
     render() {
         return (
-            <MyContext.Consumer>
+            <TagContext.Consumer>
             {(context)=> (
             <button className="settings-btn" onClick={context.toggleEditTag}>{context.state.isEditTag ? "Edit" : "Unedit"}</button>)}
-            </MyContext.Consumer>
+            </TagContext.Consumer>
     )
     }
 
