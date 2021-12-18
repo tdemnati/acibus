@@ -22,6 +22,10 @@ nestedContentFields {
           data
           
         }
+        nestedContentFields {
+          contentFieldValue {
+            data
+          }}
 }
       }
     }
@@ -74,7 +78,7 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
     const { loading, error, structuredContents } = this.props.data;
     if (loading) return <div>Loading</div>;
     if (error) return <h1>ERROR</h1>;
-    
+
     return (
       
         
@@ -87,12 +91,12 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
             <li key={id}>
               {/* {id}: {title} */}
               {contentFields.map((d) => (
-              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, d.contentFieldValue.data, structuredContents)} className="mylist">
+              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, d.contentFieldValue.data, contentFields)} className="mylist">
                 {d.contentFieldValue.data}
-                {d.nestedContentFields.map((d) => (
+                {/* {d.nestedContentFields.map((d) => (
               <span id={id.toString()} key={uuidv4()} className="myhiddenlist">
                 {d.contentFieldValue.data}
-              </span>))}
+              </span>))} */}
               </p>))}
             </li>
           ))
