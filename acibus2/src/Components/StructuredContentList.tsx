@@ -93,10 +93,6 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
               {contentFields.map((d) => (
               <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, d.contentFieldValue.data, contentFields)} className="mylist">
                 {d.contentFieldValue.data}
-                {/* {d.nestedContentFields.map((d) => (
-              <span id={id.toString()} key={uuidv4()} className="myhiddenlist">
-                {d.contentFieldValue.data}
-              </span>))} */}
               </p>))}
             </li>
           ))

@@ -14,7 +14,10 @@ import {
 
 const client = new ApolloClient({
   uri: "https://a-cibus.com:8443/o/graphql",
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  headers:{
+    Authorization: `Basic ZGVtbmF0aS50YXJpa0BnbWFpbC5jb206dGVzdA==`
+  }
 });
 
 ReactDOM.render(

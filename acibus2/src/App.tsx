@@ -7,7 +7,10 @@ import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
+import UpdateStructuredContent from './Components/UpdateStructuredContent';
 import Save from './Components/Save';
+import Save2 from './Components/SaveButton';
+import SaveButton from './Components/SaveButton';
 
 const Card = ({children}) => (
   <div
@@ -39,25 +42,27 @@ class App extends React.Component<any, any> {
           <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
           </div>
           <div className="section">
-          <h3>DATA SET</h3>
-          <p className="settingsLabel">Select Text File</p>
-          {/* todo */}
+          <h3>PROJECT</h3>
+          <div className="settings">
+          <p className="settingsLabel">Select project</p>
           </div>
-          <div className="section">
-          
-          <h3>SETTINGS</h3>
           <div className="settings">
           <p className="settingsLabel">Edit tags</p>
           <ToggleEditTag/>
           </div>
           </div>
+
           <div className="section">
             <h3>MY CONTENT</h3>
             <ul>
               <StructuredContentList structuredContentId={undefined}/>
             </ul>
           </div>
+          <div className="section">
           
+          <h3>SETTINGS</h3>
+
+          </div>
         </div>
 
         <div id="main">
@@ -71,7 +76,7 @@ class App extends React.Component<any, any> {
           </Card>
           <Card>
             <h4>Save</h4>
-            <Save/>
+            <SaveButton/>
           </Card>
         </div>
         </div>
