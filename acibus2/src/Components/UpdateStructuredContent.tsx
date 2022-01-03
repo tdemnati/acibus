@@ -3,6 +3,8 @@ import { gql } from "@apollo/client";
 import { graphql, ChildProps } from "@apollo/react-hoc";
 import ContentContext from '../Providers/ContentProvider';
 import { v4 as uuidv4 } from 'uuid';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, ButtonGroup, CloseButton, Dropdown, DropdownButton, FormControl, InputGroup, ToggleButton } from 'react-bootstrap';
 
 const UPDATE_STRUCTURED_CONTENTS = gql`
 mutation{
@@ -192,8 +194,10 @@ class UpdateContent extends React.Component<ChildProps<InputProps, Response>, {}
       {(contentcontext)=> (
         
       <div>
-        <button onClick={this.onClick.bind(this)}>Accept</button>
-          </div>
+        <button 
+        onClick={this.onClick.bind(this)}>
+          ACEP</button>
+        </div>
           )
           }
       </ContentContext.Consumer>

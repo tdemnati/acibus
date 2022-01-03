@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from 'react';
 import './App.css';
 import {TagProvider} from './Providers/TagProvider';
@@ -11,6 +12,7 @@ import UpdateStructuredContent from './Components/UpdateStructuredContent';
 import Save from './Components/Save';
 import Save2 from './Components/SaveButton';
 import SaveButton from './Components/SaveButton';
+import { Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
 
 const Card = ({children}) => (
   <div
@@ -45,6 +47,7 @@ class App extends React.Component<any, any> {
           <h3>PROJECT</h3>
           <div className="settings">
           <p className="settingsLabel">Select project</p>
+
           </div>
           <div className="settings">
           <p className="settingsLabel">Edit tags</p>

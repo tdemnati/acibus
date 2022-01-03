@@ -1,5 +1,7 @@
 import * as React from 'react';
 import TagContext from '../Providers/TagProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, ButtonGroup, CloseButton, Dropdown, DropdownButton, FormControl, InputGroup, ToggleButton } from 'react-bootstrap';
 
 
 class RadioTag extends React.Component{
@@ -10,15 +12,15 @@ class RadioTag extends React.Component{
                     {(context)=> (
                         <div>
                         {context.state.tagList.map(({tag}, idx) => (
-                            <label key={idx}>
-                            <input
+                            <ButtonGroup key={idx}>
+                            <ToggleButton
                                 type="radio"
                                 value={tag}
                                 onChange={context.onSelectTag}
-                                checked={context.state.tag===tag}/>
-                            {tag}
-                            {context.state.isEditTag ? "": <button value={tag} onClick={context.deleteItem}>Del</button>}
-                            </label>
+                                checked={context.state.tag===tag}
+                                color={context.state.color}>{tag}</ToggleButton>
+                            {context.state.isEditTag ? "": <CloseButton value={tag} onClick={context.deleteItem}></CloseButton>}
+                            </ButtonGroup>
                         ))}
                         <br/>
                         {context.state.isEditTag ? "": <div>
