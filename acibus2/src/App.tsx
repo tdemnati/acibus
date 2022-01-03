@@ -8,11 +8,7 @@ import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
-import UpdateStructuredContent from './Components/UpdateStructuredContent';
-import Save from './Components/Save';
-import Save2 from './Components/SaveButton';
 import SaveButton from './Components/SaveButton';
-import { Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
 
 const Card = ({children}) => (
   <div

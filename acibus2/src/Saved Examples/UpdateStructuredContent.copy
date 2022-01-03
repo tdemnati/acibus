@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 import { graphql, ChildProps } from "@apollo/react-hoc";
 import ContentContext from '../Providers/ContentProvider';
 import { v4 as uuidv4 } from 'uuid';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, ButtonGroup, CloseButton, Dropdown, DropdownButton, FormControl, InputGroup, ToggleButton } from 'react-bootstrap';
 
 const UPDATE_STRUCTURED_CONTENTS = gql`
@@ -180,7 +179,7 @@ class UpdateContent extends React.Component<ChildProps<InputProps, Response>, {}
       .then(({ data }) => {
         console.log('got data', data);
       }).catch((error) => {
-        console.log('there was an error sending the query', error);
+        console.log('there was an error sending that query', error);
       });
   }
 
@@ -192,12 +191,7 @@ class UpdateContent extends React.Component<ChildProps<InputProps, Response>, {}
       <ContentContext.Consumer>
       
       {(contentcontext)=> (
-        
-      <div>
-        <button 
-        onClick={this.onClick.bind(this)}>
-          ACEP</button>
-        </div>
+        <Button onClick={this.onClick.bind(this)}>ACCEPT</Button>
           )
           }
       </ContentContext.Consumer>
@@ -206,4 +200,4 @@ class UpdateContent extends React.Component<ChildProps<InputProps, Response>, {}
   }
 }
 
-export default withUpdateContent(UpdateContent)
+export default withUpdateContent(UpdateContent);

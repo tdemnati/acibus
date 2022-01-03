@@ -3,6 +3,7 @@ import TagContext from '../Providers/TagProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
+import { Button } from 'react-bootstrap';
 
 
  
@@ -84,9 +85,9 @@ function SaveButton() {
     return (
       <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <button onClick={() => {
+        <Button onClick={() => {
           updateStructuredContent();
-        }}>Accept</button>
+        }}>ACCEPT</Button>
       </>
       
     );
