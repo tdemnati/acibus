@@ -9,6 +9,7 @@ import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
 import SaveButton from './Components/SaveButton';
+import { Accordion } from 'react-bootstrap';
 
 const Card = ({children}) => (
   <div
@@ -36,34 +37,49 @@ class App extends React.Component<any, any> {
       <TagProvider>
       <div id="wrapper">
         <div id="sidebar">
+          
           <div id="title">
           <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
           </div>
-          <div className="section">
-          <h3>PROJECT</h3>
+          <Accordion defaultActiveKey="1" flush>
+          
+          <Accordion.Item eventKey="1">
+          <Accordion.Header>PROJECT</Accordion.Header>
+          <Accordion.Body>
           <div className="settings">
           <p className="settingsLabel">Select project</p>
-
           </div>
           <div className="settings">
           <p className="settingsLabel">Edit tags</p>
           <ToggleEditTag/>
           </div>
-          </div>
-
+          </Accordion.Body>
+          
+          </Accordion.Item>
+          <Accordion.Item eventKey="2">
+          <Accordion.Header>MY CONTENT</Accordion.Header>
+          <Accordion.Body>
           <div className="section">
-            <h3>MY CONTENT</h3>
             <ul>
               <StructuredContentList structuredContentId={undefined}/>
             </ul>
           </div>
-          <div className="section">
+          </Accordion.Body>
+          </Accordion.Item>
           
-          <h3>SETTINGS</h3>
-
+          <Accordion.Item eventKey="3">
+          <Accordion.Header>SETTINGS</Accordion.Header>
+          <Accordion.Body>
+          <div className="section">
+          <p>Some settings</p>
           </div>
-        </div>
+          </Accordion.Body>
+          </Accordion.Item>
 
+
+          </Accordion>
+        </div>
+        
         <div id="main">
           <Card>
             <h4>Choose a Tag</h4>
