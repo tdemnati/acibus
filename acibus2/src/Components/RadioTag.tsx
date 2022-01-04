@@ -15,10 +15,10 @@ class RadioTag extends React.Component{
                             <ButtonGroup key={idx}>
                             <ToggleButton
                                 type="radio"
-                                value={tag}
+                                value={idx}
                                 onChange={context.onSelectTag}
                                 checked={context.state.tag===tag}
-                                color={context.state.color}>{tag}</ToggleButton>
+                                >{tag}</ToggleButton>
                             {context.state.isEditTag ? "": <CloseButton value={tag} onClick={context.deleteItem}></CloseButton>}
                             </ButtonGroup>
                         ))}
