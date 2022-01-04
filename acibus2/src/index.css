@@ -21,8 +21,6 @@ code {
 }
 
 #sidebar {
-  
-  background: #54606e;
   width: 275px;
   min-width: 220px;
   height: 100%;
@@ -46,10 +44,6 @@ code {
 }
 
 .section {
-  border-bottom: 1px solid #384451;
-  margin-bottom: 17.5px;
-  padding: 0 17.5px 20px 17.5px;
-  color:#d6d2d2;
   justify-content: space-between;
 
 }
@@ -96,10 +90,10 @@ h3 {
 }
 
 ul {
-  display:flexbox;
+
   text-decoration: none;
   list-style-type: none;
-  padding-left: 0%;
+  padding-left: 0;
 }
 
 input {

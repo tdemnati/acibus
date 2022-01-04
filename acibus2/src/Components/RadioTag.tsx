@@ -12,14 +12,17 @@ class RadioTag extends React.Component{
                     {(context)=> (
                         <div>
                         {context.state.tagList.map(({tag}, idx) => (
-                            <ButtonGroup key={idx}>
-                            <ToggleButton
+                            <ButtonGroup key={idx} size="sm">
+                            <ToggleButton style={{marginLeft:5}}
+                                id={`radio-${idx}`}
                                 type="radio"
-                                value={idx}
+                                name="radio"
+                                value={tag}
                                 onChange={context.onSelectTag}
                                 checked={context.state.tag===tag}
-                                >{tag}</ToggleButton>
-                            {context.state.isEditTag ? "": <CloseButton value={tag} onClick={context.deleteItem}></CloseButton>}
+                                color='yellow'>
+                                {tag} {context.state.isEditTag ? "": <CloseButton variant="white" aria-label="Hide" value={tag} onClick={context.deleteItem}></CloseButton>}</ToggleButton>
+                            
                             </ButtonGroup>
                         ))}
                         <br/>

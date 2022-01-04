@@ -85,7 +85,7 @@ function SaveButton() {
     return (
       <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <Button onClick={() => {
+        <Button size="sm" onClick={() => {
           updateStructuredContent();
         }}>ACCEPT</Button>
       </>
