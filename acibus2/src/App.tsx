@@ -9,21 +9,21 @@ import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
 import SaveButton from './Components/SaveButton';
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
+import SelectProject from './Components/SelectProject';
 
-const Card = ({children}) => (
+/* const Card = ({children}) => (
   <div
     style={{
       boxShadow: '0 2px 4px rgba(0,0,0,.1)',
       margin: 6,
       padding: 16,
       backgroundColor: 'white',
-      width: 500,
     }}
   >
     {children}
   </div>
-)
+) */
 
 class App extends React.Component<any, any> {
 
@@ -35,8 +35,9 @@ class App extends React.Component<any, any> {
 
       <ContentProvider>
       <TagProvider>
-      <div id="wrapper">
-        <div id="sidebar">
+      <Container>
+      <Row>
+        <Col   xs={3}>
           
           <div id="title">
           <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
@@ -44,30 +45,34 @@ class App extends React.Component<any, any> {
           <Accordion defaultActiveKey="1" flush>
           
           <Accordion.Item eventKey="1">
-          <Accordion.Header>PROJECT</Accordion.Header>
+          <Accordion.Header>PROJECTS</Accordion.Header>
           <Accordion.Body>
           <div className="settings">
           <p className="settingsLabel">Select project</p>
+          <SelectProject></SelectProject>
           </div>
+          </Accordion.Body>
+          
+          <Accordion.Item eventKey="2">
+          <Accordion.Header>TAGS</Accordion.Header>
+          <Accordion.Body>
           <div className="settings">
           <p className="settingsLabel">Edit tags</p>
           <ToggleEditTag/>
           </div>
           </Accordion.Body>
-          
           </Accordion.Item>
-          <Accordion.Item eventKey="2">
-          <Accordion.Header>MY CONTENT</Accordion.Header>
+
+
+          </Accordion.Item>
+          <Accordion.Item eventKey="3">
+          <Accordion.Header>CONTENTS</Accordion.Header>
           <Accordion.Body>
-          <div className="section">
-            <ul>
-              <StructuredContentList structuredContentId={undefined}/>
-            </ul>
-          </div>
+          Some content config
           </Accordion.Body>
           </Accordion.Item>
           
-          <Accordion.Item eventKey="3">
+          <Accordion.Item eventKey="4">
           <Accordion.Header>SETTINGS</Accordion.Header>
           <Accordion.Body>
           <div className="section">
@@ -78,23 +83,47 @@ class App extends React.Component<any, any> {
 
 
           </Accordion>
-        </div>
+        </Col>
         
-        <div id="main">
+        <Col>
           <Card>
-            <h4>Choose a Tag</h4>
-            <RadioTag/>
+            <Card.Body>
+            <Card.Title>Choose a Tag</Card.Title>
+              <RadioTag/>
+            </Card.Body>
           </Card>
+
           <Card>
-            <h4>Annotate Text</h4>
+            <Card.Body>
+            <Card.Title>Annotate Text</Card.Title>
             <AnnotateText/>
+            </Card.Body>
           </Card>
+
           <Card>
-            <h4>Save</h4>
+            <Card.Body>
+            <Card.Title>Save</Card.Title>
             <SaveButton/>
+            </Card.Body>
           </Card>
-        </div>
-        </div>
+        </Col>
+
+        <Col  xs={4}>
+
+        <Card>
+            <Card.Body>
+            <Card.Title>Content List</Card.Title>
+            <ul>
+              <StructuredContentList structuredContentId={undefined}/>
+            </ul>
+            </Card.Body>
+          </Card>
+
+        </Col>
+
+
+        </Row>
+        </Container>
       </TagProvider>
       </ContentProvider>
     </div>

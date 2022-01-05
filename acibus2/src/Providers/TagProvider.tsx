@@ -6,14 +6,17 @@ class TagProvider extends React.Component{
   state = {
     value: [{}],
     tag: 'SBJ',
+    color: '#ffe184',
     tagList : [
                 {tag:'SBJ',
-                color:'#ffe184'},
+                color:'#0d6efd'},
                 {tag:'OBJ',
                 color:'#ffe184'},
                 {tag:'REL',
                 color:'#d2afe9'},
     ],
+    mynewtag:'TAG',
+    mynewcolor:'#ffe184',
     newtag:{tag: 'TAG',color:'#ffe184'},
     isEditTag: true
   }
@@ -25,12 +28,13 @@ return (
   state: this.state,
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},
-  addTag: () => {this.setState({tagList: [...this.state.tagList, this.state.newtag]})},
+  addTag: () => {this.setState({tagList: [...this.state.tagList, {tag: this.state.mynewtag, color: this.state.mynewcolor}]})},
   resetTag: () => {
     this.setState({tagList: this.initialtagList});
     console.log("State is: " + JSON.stringify(this.state));
   },
-  onInputChange: e =>{this.setState({newtag: {tag: e.target.value, color: ""}})},
+  onInputChange: e =>{this.setState({mynewtag: e.target.value})},
+  onColorChange: e =>{this.setState({mynewcolor: e.target.value})},
   deleteItem: (e) =>{
     var array = [...this.state.tagList];
     var index = array.findIndex(el => el.tag === e.target.value);
