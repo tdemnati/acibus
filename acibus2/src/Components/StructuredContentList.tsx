@@ -85,7 +85,6 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
       <ContentContext.Consumer>
       
       {(contentcontext)=> (
-        
       <div>
               {structuredContents.items.map(({ id, title, contentFields}) => (
             <li key={id}>
@@ -94,10 +93,8 @@ class StructuredContentList extends React.Component<ChildProps<InputProps, Respo
               <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, d.contentFieldValue.data, contentFields)} className="mylist">
                 {d.contentFieldValue.data}
               </p>))}
-            </li>
-          ))
-      }
-          </div>
+            </li>))}
+      </div>
           )
           }
       </ContentContext.Consumer>

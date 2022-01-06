@@ -11,6 +11,8 @@ import StructuredContentList from './Components/StructuredContentList';
 import SaveButton from './Components/SaveButton';
 import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
 import SelectProject from './Components/SelectProject';
+import AcibusNavBAr from './Components/AcibusNavBar';
+import AddProject from './Components/AddProject';
 
 /* const Card = ({children}) => (
   <div
@@ -32,25 +34,25 @@ class App extends React.Component<any, any> {
     return (
       
     <div>
-
+      <AcibusNavBAr/>
       <ContentProvider>
       <TagProvider>
       <Container>
       <Row>
         <Col   xs={3}>
           
-          <div id="title">
-          <h2 style={{marginTop:'0px', paddingTop:'20px'}}><a href="http://a-cibus.com">ACIBUS</a></h2>
-          </div>
           <Accordion defaultActiveKey="1" flush>
           
           <Accordion.Item eventKey="1">
           <Accordion.Header>PROJECTS</Accordion.Header>
           <Accordion.Body>
-          <div className="settings">
-          <p className="settingsLabel">Select project</p>
+          
+          <p className="settingsLabel">Select a project</p>
+          
           <SelectProject></SelectProject>
-          </div>
+          <br/>
+          <p className="settingsLabel">Create a project</p>
+          <AddProject></AddProject>
           </Accordion.Body>
           
           <Accordion.Item eventKey="2">
@@ -68,12 +70,12 @@ class App extends React.Component<any, any> {
           <Accordion.Item eventKey="3">
           <Accordion.Header>CONTENTS</Accordion.Header>
           <Accordion.Body>
-          Some content config
+          <p className="settingsLabel">Add content</p>
           </Accordion.Body>
           </Accordion.Item>
           
           <Accordion.Item eventKey="4">
-          <Accordion.Header>SETTINGS</Accordion.Header>
+          <Accordion.Header>GUIDELINES</Accordion.Header>
           <Accordion.Body>
           <div className="section">
           <p>Some settings</p>
@@ -84,32 +86,36 @@ class App extends React.Component<any, any> {
 
           </Accordion>
         </Col>
-        
+        <br />
         <Col>
+        <br />
           <Card>
+          <Card.Header>Choose a Tag</Card.Header>
             <Card.Body>
-            <Card.Title>Choose a Tag</Card.Title>
               <RadioTag/>
             </Card.Body>
           </Card>
-
+          <br />
           <Card>
+          <Card.Header>Annotate Text</Card.Header>
             <Card.Body>
-            <Card.Title>Annotate Text</Card.Title>
+            
             <AnnotateText/>
             </Card.Body>
           </Card>
-
+          <br />
           <Card>
+          <Card.Header>Save</Card.Header>
             <Card.Body>
-            <Card.Title>Save</Card.Title>
+            
             <SaveButton/>
             </Card.Body>
           </Card>
+
         </Col>
 
         <Col  xs={4}>
-
+        <br />
         <Card>
             <Card.Body>
             <Card.Title>Content List</Card.Title>
