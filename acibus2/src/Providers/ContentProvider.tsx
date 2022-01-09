@@ -8,7 +8,7 @@ class ContentProvider extends React.Component{
   state = {
     value: [],
     StructuredContentID: '42',
-    TEXT: 'Click on MY CONTENT and start annotating'
+    TEXT: '',
   }
   
 

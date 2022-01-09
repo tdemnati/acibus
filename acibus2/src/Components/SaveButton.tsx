@@ -3,7 +3,7 @@ import TagContext from '../Providers/TagProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
-import { Button } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 
 
  
@@ -80,7 +80,10 @@ function SaveButton() {
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
 
     if (loading) return <p>Submitting...</p>;
-    if (error) return <p>Submission error! ${error.message}</p>;
+    if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert><p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
+    <Button size="sm" onClick={() => {
+      updateStructuredContent();
+    } }>ACCEPT</Button></>);
 
     return (
       <>

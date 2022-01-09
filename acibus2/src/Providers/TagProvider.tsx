@@ -16,9 +16,10 @@ class TagProvider extends React.Component{
                 color:'#d2afe9'},
     ],
     mynewtag:'TAG',
-    mynewcolor:'#ffe184',
-    newtag:{tag: 'TAG',color:'#ffe184'},
-    isEditTag: true
+    mynewcolor:'#0d6efd',
+    isEditTag: true,
+    FolderID:'',
+    FolderName:'Select'
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
@@ -26,6 +27,12 @@ class TagProvider extends React.Component{
 return (
 <TagContext.Provider value={{
   state: this.state,
+  onSelectProject: e => {
+    this.setState({FolderID: e.target.value});
+    this.setState({FolderName: e.target.innerText});
+    console.log('FolderID: '  + e.target.value);
+    console.log('FolderName: ' + e.target.innerText);
+  },
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},
   addTag: () => {this.setState({tagList: [...this.state.tagList, {tag: this.state.mynewtag, color: this.state.mynewcolor}]})},

@@ -83,6 +83,14 @@ class App extends React.Component<any, any> {
           </Accordion.Body>
           </Accordion.Item>
 
+          <Accordion.Item eventKey="5">
+          <Accordion.Header>TEAM</Accordion.Header>
+          <Accordion.Body>
+          <div className="section">
+          <p>Select Project Members</p>
+          </div>
+          </Accordion.Body>
+          </Accordion.Item>
 
           </Accordion>
         </Col>
@@ -120,7 +128,7 @@ class App extends React.Component<any, any> {
             <Card.Body>
             <Card.Title>Content List</Card.Title>
             <ul>
-              <StructuredContentList structuredContentId={undefined}/>
+              <StructuredContentList/>
             </ul>
             </Card.Body>
           </Card>
