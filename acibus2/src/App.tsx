@@ -13,6 +13,7 @@ import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
 import SelectProject from './Components/SelectProject';
 import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
+import AddContent from './Components/AddContent';
 
 /* const Card = ({children}) => (
   <div
@@ -71,6 +72,7 @@ class App extends React.Component<any, any> {
           <Accordion.Header>CONTENTS</Accordion.Header>
           <Accordion.Body>
           <p className="settingsLabel">Add content</p>
+          <AddContent/>
           </Accordion.Body>
           </Accordion.Item>
           
