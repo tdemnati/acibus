@@ -6,23 +6,23 @@ import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 
 
+export const GET_STRUCTURED_CONTENT_FOLDERS = gql`
+query {
+  structuredContentFolders(siteKey:"42754") {
+    items{
+      id
+      name
+    }
+  }
+}
+`;
+
 function SelectProject() {
     const myContext = useContext(TagContext);
     let myFolderID = myContext.state.FolderID;
     let myFolderName = myContext.state.FolderName;
 
-    const GET_STRUCTURED_CONTENT_FOLDERS = gql`
-    query {
-      structuredContentFolders(siteKey:"42754") {
-        items{
-          id
-          name
-        }
-      }
-    }
-`;
-
-    const { loading, error, data } = useQuery(GET_STRUCTURED_CONTENT_FOLDERS);
+    const { loading, error, data} = useQuery(GET_STRUCTURED_CONTENT_FOLDERS);
     if (loading) return <p>Submitting...</p>;
     if (error) return <p>Submission error! ${error.message}</p>;
 

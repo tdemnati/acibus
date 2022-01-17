@@ -4,9 +4,7 @@ import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
-
-
- 
+import { GET_STRUCTURED_CONTENTS } from './StructuredContentList';
 
 function AddContent() {
     const tagcontext = useContext(TagContext);
@@ -59,11 +57,13 @@ function AddContent() {
 
 
     const [createStructuredContentFolderStructuredContent, {data, loading, error}] = useMutation(ADD_FOLDER_STRUCTURED_CONTENT, {
-      variables: {
-        folderID: tagcontext.state.FolderID,
-        contentTEXT: "placeholder"
-      },
+      refetchQueries: [{query: GET_STRUCTURED_CONTENTS, 
+        variables: {folderID: tagcontext.state.FolderID,
+        contentTEXT: "placeholder"}}],
+      awaitRefetchQueries: true,
     });
+
+
     let inputcontentTEXT;
 
     if (loading) return <p>Submitting...</p>;
@@ -72,22 +72,22 @@ function AddContent() {
     return (
       <>
             <div>
-      <Form
-        onSubmit={e => {
-          e.preventDefault();
-          createStructuredContentFolderStructuredContent({ variables: { folderID: tagcontext.state.FolderID,
-            contentTEXT: inputcontentTEXT.value } });
-            inputcontentTEXT ='';
-        }}
-      >
+    <Form
+      onSubmit={e => {
+        e.preventDefault();
+        createStructuredContentFolderStructuredContent({ variables: { folderID: tagcontext.state.FolderID,
+          contentTEXT: inputcontentTEXT.value } });
+          inputcontentTEXT ='';
+      }}
+    >
        
        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
     <Form.Control ref={node => {
             inputcontentTEXT = node;
-          }} size="sm" as="textarea" rows={3}  placeholder="New Content" required/>
-  </Form.Group>
-        <Button  size="sm" type="submit">Add Content</Button>
-      </Form>
+          }} size="sm" as="textarea" rows={3} placeholder="New Content" required/>
+    </Form.Group>
+    <Button  size="sm" type="submit">Add Content</Button>
+    </Form>
     </div>
       </>
       

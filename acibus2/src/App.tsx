@@ -14,6 +14,7 @@ import SelectProject from './Components/SelectProject';
 import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
 import AddContent from './Components/AddContent';
+import AcceptButton from './Components/AcceptButton';
 
 /* const Card = ({children}) => (
   <div
@@ -119,6 +120,7 @@ class App extends React.Component<any, any> {
             <Card.Body>
             
             <SaveButton/>
+            <AcceptButton/>
             </Card.Body>
           </Card>
 

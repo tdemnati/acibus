@@ -14,6 +14,7 @@ function SaveButton() {
     let myValue = myContext.state.value;
     let myText = myContext.state.TEXT;
     let myID = myContext.state.StructuredContentID;
+
     formatedValue+=`
     contentFields: [
     {
@@ -47,11 +48,11 @@ function SaveButton() {
 ]`;
       
 
-    console.log(formatedValue);
+    
     const UPDATE_STRUCTURED_CONTENT = gql`
-    mutation {
+    mutation MyUpdateStructuredContent($myID: Long!){
       updateStructuredContent(
-        structuredContentId: ${myID}
+        structuredContentId: $myID
         structuredContent: {
           contentStructureId: 66167
           title: "My Content"
@@ -76,7 +77,7 @@ function SaveButton() {
       }
     }
 `;
-
+console.log(UPDATE_STRUCTURED_CONTENT);
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
 
     if (loading) return <p>Submitting...</p>;
@@ -89,7 +90,7 @@ function SaveButton() {
       <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
         <Button size="sm" onClick={() => {
-          updateStructuredContent();
+          updateStructuredContent({ variables: { myID: myID}});
         }}>ACCEPT</Button>
       </>
       

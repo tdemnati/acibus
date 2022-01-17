@@ -1,9 +1,9 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
+import { GET_STRUCTURED_CONTENT_FOLDERS } from './SelectProject';
 
 
  
@@ -24,11 +24,14 @@ function AddProject() {
 `;
 
     const [createSiteStructuredContentFolder, {data, loading, error}] = useMutation(ADD_SITE_STRUCTURED_CONTENT_FOLDER, {
-      variables: {
-        folderName: "placeholder",
-        folderDescription: "placeholder"
-      },
-    });
+      refetchQueries: [{query: GET_STRUCTURED_CONTENT_FOLDERS, 
+        variables: {
+          folderName: "placeholder",
+          folderDescription: "placeholder"}
+        }],
+      awaitRefetchQueries: true,
+    }
+);
     let inputfolderName;
     let inputfolderDescription;
 
