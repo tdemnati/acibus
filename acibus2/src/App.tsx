@@ -8,7 +8,6 @@ import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
-import SaveButton from './Components/SaveButton';
 import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
 import SelectProject from './Components/SelectProject';
 import AcibusNavBAr from './Components/AcibusNavBar';
