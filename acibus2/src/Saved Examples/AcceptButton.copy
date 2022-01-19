@@ -50,7 +50,7 @@ function AcceptButton() {
     };
 
     myContentfields.contentFields.push({name: "text",
-    contentFieldValue: { data: "My New Text is this" }});
+    contentFieldValue: { data: "My Text" }});
 
     console.log(n);
     for (let i = 0; i < n; i++) {
@@ -118,7 +118,7 @@ function AcceptButton() {
     console.log(myContentfields.contentFields);
     let mysContentfields = myContentfields.contentFields;
     const UPDATE_STRUCTURED_CONTENT = gql`
-    mutation MyUpdateStructuredContent($myID: Long!, $mysContentfields: [InputContentField]){
+    mutation MyUpdateStructuredContent($myID: Long!, $mysContentfields: InputContentField){
       updateStructuredContent(
         structuredContentId: $myID
         structuredContent: {

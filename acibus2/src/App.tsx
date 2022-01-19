@@ -118,8 +118,6 @@ class App extends React.Component<any, any> {
           <Card>
           <Card.Header>Save</Card.Header>
             <Card.Body>
-            
-            <SaveButton/>
             <AcceptButton/>
             </Card.Body>
           </Card>

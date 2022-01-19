@@ -6,27 +6,18 @@ import logo_acibus from '../images/logo_acibus.svg'
 function AcibusNavBAr() {
 
   return (
-
 <>
-
   <br />
   <Navbar variant="light" className="shadow-sm bg-white">
     <Container> 
     <Row>
     <Navbar.Brand href="#home">
     <img
-          alt=""
-          src={logo_acibus}
-          height="30"
-          className="d-inline-block align-top"
-        />
-      
+        alt=""
+        src={logo_acibus}
+        height="30"
+        className="d-inline-block align-top"/>
     </Navbar.Brand>
-    </Row>
-    <Row>
-    <Nav>
-    <Nav.Link href="#home">Tasks</Nav.Link>
-    </Nav>
     </Row>
     <Row>
     <Nav className="me-auto">
@@ -34,7 +25,6 @@ function AcibusNavBAr() {
       <Nav.Link href="#pricing">My User</Nav.Link>
     </Nav>
     </Row>
-
     </Container>
   </Navbar>
 
