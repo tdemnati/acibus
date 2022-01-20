@@ -37,10 +37,9 @@ class RadioTag extends React.Component{
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridColor">
-      <Form.Label htmlFor="exampleColorInput">Color</Form.Label>
+      <Form.Label>Color</Form.Label>
             <Form.Control
                 type="color"
-                id="ColorInput"
                 defaultValue="#0d6efd"
                 title="Choose your color"
                 onChange={context.onColorChange}

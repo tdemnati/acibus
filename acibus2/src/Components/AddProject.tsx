@@ -35,9 +35,10 @@ function AddProject() {
     let inputfolderName;
     let inputfolderDescription;
 
+    
     if (loading) return <p>Submitting...</p>;
     if (error) return <p>Submission error! ${error.message}</p>;
-
+    //console.log(data.createSiteStructuredContentFolder.id);
     return (
       <>
             <div>

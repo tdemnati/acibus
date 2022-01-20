@@ -53,7 +53,7 @@ function StructuredContentList() {
   return (
     <>
       <div>
-              {data.structuredContentFolderStructuredContents.items.map(({ id, title, contentFields}) => (
+              {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
               {contentFields.map((d) => (

@@ -19,7 +19,6 @@ function AcceptButton() {
     let end=0;
     let tag = 'tag';
     let color = 'color';
-    let tokens = [];
     let token:string;
     var k;
 
@@ -50,7 +49,7 @@ function AcceptButton() {
     };
 
     myContentfields.contentFields.push({name: "text",
-    contentFieldValue: { data: "My New Text is this" }});
+    contentFieldValue: { data: myText }});
 
     console.log(n);
     for (let i = 0; i < n; i++) {
