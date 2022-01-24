@@ -1,18 +1,19 @@
+import { gql, useQuery } from '@apollo/client';
 import * as React from 'react';
-import { Button } from 'react-bootstrap';
+import { useContext } from 'react';
+import { Button, ButtonGroup, CloseButton, ToggleButton } from 'react-bootstrap';
 import TagContext from '../Providers/TagProvider';
 
-class ToggleEditTag extends React.Component{
-    
-    render() {
-        return (
-            <TagContext.Consumer>
-            {(context)=> (
-            <Button size="sm" onClick={context.toggleEditTag}>{context.state.isEditTag ? "Edit" : "Save"}</Button>)}
-            </TagContext.Consumer>
-    )
-    }
+//TODO: Create Mutation that will update values of taglist
 
+function ToggleEditTag() {
+  const myContext = useContext(TagContext);
+
+        return (
+            <>
+            <Button size="sm" onClick={myContext.toggleEditTag}>{myContext.state.isEditTag ? "Edit" : "Save"}</Button>
+            </>
+    )
   }
   
 export default ToggleEditTag;

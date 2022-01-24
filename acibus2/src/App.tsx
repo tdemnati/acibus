@@ -14,6 +14,7 @@ import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
 import AddContent from './Components/AddContent';
 import AcceptButton from './Components/AcceptButton';
+import TagsList from './Components/TagsList';
 
 /* const Card = ({children}) => (
   <div
@@ -49,8 +50,16 @@ class App extends React.Component<any, any> {
           <Accordion.Body>
           
           <p className="settingsLabel">Select a project</p>
-          
-          <SelectProject></SelectProject>
+          <Container>
+          <Row className="d-flex">
+          <Col>
+          <SelectProject/>
+          </Col>
+          <Col>
+          <TagsList/>
+          </Col>
+          </Row>
+          </Container>
           <br/>
           <p className="settingsLabel">Create a project</p>
           <AddProject></AddProject>

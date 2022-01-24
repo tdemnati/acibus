@@ -8,30 +8,34 @@ class TagProvider extends React.Component{
     tag: 'SBJ',
     color: '#ffe184',
     tagList : [
-                {tag:'SBJ',
-                color:'#0d6efd'},
-                {tag:'OBJ',
-                color:'#ffe184'},
-                {tag:'REL',
-                color:'#d2afe9'},
     ],
+    tagID:"any",
     mynewtag:'TAG',
     mynewcolor:'#0d6efd',
     isEditTag: true,
-    FolderID:'',
-    FolderName:'Select'
+    FolderID:0,
+    FolderName:'MY PROJECTS',
+    mytagList:[],
+    TAGLIST:[]
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
   render() { 
 return (
-<TagContext.Provider value={{
+<TagContext.Provider value={{ 
   state: this.state,
-  onSelectProject: e => {
-    this.setState({FolderID: e.target.value});
-    this.setState({FolderName: e.target.innerText});
-    console.log('FolderID: '  + e.target.value);
-    console.log('FolderName: ' + e.target.innerText);
+  onSelectProjectSet: (contentFields) => {
+    this.setState({mytagList: contentFields});
+  },
+  setTagList:(mytaglists) =>{
+    this.setState({tagList: mytaglists})}
+
+  ,
+  onSelectProject: (id, name) => {
+    this.setState({FolderID: id});
+    this.setState({FolderName: name});
+    console.log('FolderID: '  + id);
+    console.log('FolderName: ' + name);
   },
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},

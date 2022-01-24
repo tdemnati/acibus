@@ -51,9 +51,9 @@ function AcceptButton() {
     myContentfields.contentFields.push({name: "text",
     contentFieldValue: { data: myText }});
 
-    console.log(n);
+    //console.log(n);
     for (let i = 0; i < n; i++) {
-      console.log('Faire ' + i + ' pas vers l\'est');
+      //console.log('Faire ' + i + ' pas vers l\'est');
       let myContentfield = {
         name: "FieldsGroup13487557",
         contentFieldValue: { data: null },
@@ -68,36 +68,36 @@ function AcceptButton() {
       ;
       switch (j) {
         case 0:
-          console.log('Start:'+ myvalue[i].start);
+          //console.log('Start:'+ myvalue[i].start);
           start = myvalue[i].start;
           myContentfield.nestedContentFields.push(
             {name:"start",contentFieldValue:{data:start}})
           break;
         case 1:
-          console.log('End:'+ myvalue[i].end);
+          //console.log('End:'+ myvalue[i].end);
           end = myvalue[i].end;
           myContentfield.nestedContentFields.push(
             {name:"end",contentFieldValue:{data:end}})
           break;
         case 2:
-          console.log('tag:'+ myvalue[i].tag);
+          //console.log('tag:'+ myvalue[i].tag);
           tag = myvalue[i].tag;
           myContentfield.nestedContentFields.push(
             {name:"tag",contentFieldValue:{data:tag}})
           break;
         case 3:
-          console.log('color:'+ myvalue[i].color);
+          //console.log('color:'+ myvalue[i].color);
           color = myvalue[i].color;
           myContentfield.nestedContentFields.push(
             {name:"color",contentFieldValue:{data:color}})
           break;
         case 4:
-          console.log('Tokens length = ' + myvalue[i].tokens.length);
+          //console.log('Tokens length = ' + myvalue[i].tokens.length);
           k = myvalue[i].tokens.length;
           //console.log(myvalue[i].tokens[0]);
            for (let m = 0; m < k; m++) {
             token = myvalue[i].tokens[m];
-            console.log('The token = ' + token);
+            //console.log('The token = ' + token);
              tokens.nestedContentFields.push({
              name:"token",contentFieldValue:{data:token}})
             }
@@ -114,7 +114,7 @@ function AcceptButton() {
       
       myContentfields.contentFields.push(myContentfield);
     }
-    console.log(myContentfields.contentFields);
+    //console.log(myContentfields.contentFields);
     let mysContentfields = myContentfields.contentFields;
     const UPDATE_STRUCTURED_CONTENT = gql`
     mutation MyUpdateStructuredContent($myID: Long!, $mysContentfields: [InputContentField]){
@@ -144,7 +144,7 @@ function AcceptButton() {
       }
     }
 `;
-console.log(UPDATE_STRUCTURED_CONTENT);
+//console.log(UPDATE_STRUCTURED_CONTENT);
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
 
     if (loading) return <p>Submitting...</p>;
