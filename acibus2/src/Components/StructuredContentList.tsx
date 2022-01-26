@@ -1,7 +1,7 @@
 import React, { useContext} from "react";
 import { gql, useQuery } from "@apollo/client";
 import ContentContext from '../Providers/ContentProvider';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import { v4 as uuidv4 } from 'uuid';
 import { Alert } from "react-bootstrap";
 
@@ -39,7 +39,7 @@ nestedContentFields {
 
 function StructuredContentList() {
   const contentcontext = useContext(ContentContext);
-  const tagcontext = useContext(TagContext);
+  const tagcontext = useContext(ProjectContext);
 
 
 

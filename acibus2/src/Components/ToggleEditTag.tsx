@@ -2,12 +2,12 @@ import { gql, useQuery } from '@apollo/client';
 import * as React from 'react';
 import { useContext } from 'react';
 import { Button, ButtonGroup, CloseButton, ToggleButton } from 'react-bootstrap';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 
 //TODO: Create Mutation that will update values of taglist
 
 function ToggleEditTag() {
-  const myContext = useContext(TagContext);
+  const myContext = useContext(ProjectContext);
 
         return (
             <>

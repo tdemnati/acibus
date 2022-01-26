@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
@@ -46,7 +46,7 @@ query getmytaglist($folderID: Long!){
 `;
 
 function SelectProject() {
-    const myContext = useContext(TagContext);
+    const myContext = useContext(ProjectContext);
     let myFolderID = myContext.state.FolderID;
     let myFolderName = myContext.state.FolderName;
 

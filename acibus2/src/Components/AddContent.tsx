@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
@@ -7,7 +7,7 @@ import { Button, Form } from 'react-bootstrap';
 import { GET_STRUCTURED_CONTENTS } from './StructuredContentList';
 
 function AddContent() {
-    const tagcontext = useContext(TagContext);
+    const tagcontext = useContext(ProjectContext);
       const ADD_FOLDER_STRUCTURED_CONTENT = gql`
       mutation addStructuredContent($folderID: Long!, $contentTEXT: String!){
         createStructuredContentFolderStructuredContent(

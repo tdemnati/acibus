@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';

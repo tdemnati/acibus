@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, ButtonGroup, CloseButton, Col, Dropdown, DropdownButton, Form, FormControl, InputGroup, Row, ToggleButton } from 'react-bootstrap';
 import { gql, useQuery } from '@apollo/client';
@@ -9,7 +9,7 @@ import { useContext } from 'react';
 
 
 function RadioTag() {
-  const myContext = useContext(TagContext);
+  const myContext = useContext(ProjectContext);
 
   //console.log(tagsdata);
         return (

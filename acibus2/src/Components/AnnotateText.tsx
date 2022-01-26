@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TagContext from '../Providers/TagProvider';
+import ProjectContext from '../Providers/ProjectProvider';
 import {TokenAnnotator} from '../Annotator';
 import ContentContext from '../Providers/ContentProvider';
 
@@ -9,7 +9,7 @@ class AnnotateText extends React.Component<any, any>{
         return (
         <ContentContext.Consumer>
             {(contentcontext)=> (
-            <TagContext.Consumer>
+            <ProjectContext.Consumer>
               {(context)=> (
               <TokenAnnotator
                   style={{
@@ -28,7 +28,7 @@ class AnnotateText extends React.Component<any, any>{
                    )}
                 />
               )}
-            </TagContext.Consumer>
+            </ProjectContext.Consumer>
             )}
         </ContentContext.Consumer>
 

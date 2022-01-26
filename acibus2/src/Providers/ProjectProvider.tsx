@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-const TagContext = React.createContext(undefined!);
+const ProjectContext = React.createContext(undefined!);
 
-class TagProvider extends React.Component{
+class ProjectProvider extends React.Component{
   state = {
     value: [{}],
     tag: 'SBJ',
@@ -23,7 +23,7 @@ class TagProvider extends React.Component{
   initialtagList = [...this.state.tagList];
   render() { 
 return (
-<TagContext.Provider value={{ 
+<ProjectContext.Provider value={{ 
   state: this.state,
   onSelectProjectSet: (contentFields) => {
     this.setState({mytagList: contentFields});
@@ -71,7 +71,7 @@ return (
         }
   }}>
   {this.props.children}
-</TagContext.Provider>
+</ProjectContext.Provider>
 
 )
 
@@ -79,9 +79,9 @@ return (
 
 }
 
-export default TagContext;
+export default ProjectContext;
 
-export {TagProvider};
+export {ProjectProvider};
 
 
 
