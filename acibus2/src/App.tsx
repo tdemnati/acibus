@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from 'react';
 import './App.css';
-import {TagProvider} from './Providers/TagProvider';
+import {ProjectProvider} from './Providers/ProjectProvider';
 import {ContentProvider} from './Providers/ContentProvider';
 
 import ToggleEditTag from './Components/ToggleEditTag';
@@ -38,7 +38,7 @@ class App extends React.Component<any, any> {
     <div>
       <AcibusNavBAr/>
       <ContentProvider>
-      <TagProvider>
+      <ProjectProvider>
       <Container>
       <Row>
         <Col   xs={3}>
@@ -129,9 +129,7 @@ class App extends React.Component<any, any> {
             <AcceptButton/>
             </Card.Body>
           </Card>
-
         </Col>
-
         <Col  xs={4}>
         <br />
         <Card>
@@ -144,11 +142,9 @@ class App extends React.Component<any, any> {
           </Card>
 
         </Col>
-
-
         </Row>
         </Container>
-      </TagProvider>
+      </ProjectProvider>
       </ContentProvider>
     </div>
     )
