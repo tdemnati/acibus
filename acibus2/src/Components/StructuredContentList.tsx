@@ -7,11 +7,13 @@ import { Alert } from "react-bootstrap";
 
 export const GET_STRUCTURED_CONTENTS = gql`
 query FolderstructuredContents($folderID: Long!){
-  structuredContentFolderStructuredContents(structuredContentFolderId:$folderID) {
+  structuredContentFolderStructuredContents(structuredContentFolderId:$folderID, 
+    filter:"contentStructureId eq 66167") {
     totalCount
     items {
       id
       title
+      contentStructureId
       contentFields {
         label
         contentFieldValue {
@@ -33,7 +35,7 @@ nestedContentFields {
   }
 }
 `;
-
+ 
 
 function StructuredContentList() {
   const contentcontext = useContext(ContentContext);
@@ -49,19 +51,21 @@ function StructuredContentList() {
   
   if (loading) return <p>Submitting...</p>;
   if (error) return <Alert variant='info'>You'll find here the list of content once you've selected a project</Alert>;
+  console.log(data);
+
 
   return (
     <>
+    {tagcontext.state.isSelectProject ? "":
       <div>
             {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
-              {contentFields.map((d) => (
-              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, d.contentFieldValue.data, contentFields)} className="mylist">
-                {d.contentFieldValue.data}
-              </p>))}
+              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, contentFields[0].contentFieldValue.data, contentFields)} className="mylist">
+              {contentFields[0].contentFieldValue.data}
+              </p>
             </li>))}
-      </div>
+      </div>}
       
     </>
     

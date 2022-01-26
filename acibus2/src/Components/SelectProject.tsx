@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
+import TagsList from './TagsList';
 
 
 export const GET_STRUCTURED_CONTENT_FOLDERS = gql`
@@ -74,7 +75,7 @@ function SelectProject() {
                 key={id}
                 eventKey={id}
                 value={tagsdata}
-                onClick={() => {{myContext.onSelectProject(id, name);myContext.setTagList(arr)}}}
+                onClick={() => {{myContext.onSelectProject(id, name);myContext.setTagList(arr);myContext.toggleTrueSelectProject()}}}
                 >{name}</Dropdown.Item>
             ))
         }

@@ -38,7 +38,7 @@ nestedContentFields {
 
 
 function TagsList() {
-  const contentcontext = useContext(ContentContext);
+  //const contentcontext = useContext(ContentContext);
   const tagcontext = useContext(TagContext);
 
 
@@ -50,10 +50,10 @@ function TagsList() {
   });
   
   if (loading) return <p>Submitting...</p>;
-  if (error) return <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Select a project from the list!</Tooltip>}>
+  if (error) return <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Select a project from the list or create a new one.</Tooltip>}>
   <span className="d-inline-block">
     <Button disabled style={{ pointerEvents: 'none' }}>
-    SELECT
+    GO
     </Button>
   </span>
 </OverlayTrigger>;
@@ -77,7 +77,7 @@ function TagsList() {
               );
   return (
     <>
-              <Button onClick={() => tagcontext.setTagList(arr)}>SELECT</Button>
+              <Button onClick={() => {tagcontext.setTagList(arr);tagcontext.toggleFalseSelectProject()}}>GO</Button>
     </>
     
   );

@@ -13,6 +13,7 @@ class TagProvider extends React.Component{
     mynewtag:'TAG',
     mynewcolor:'#0d6efd',
     isEditTag: true,
+    isSelectProject: true,
     FolderID:0,
     FolderName:'MY PROJECTS',
     mytagList:[],
@@ -59,7 +60,15 @@ return (
   toggleEditTag: () => {
     this.setState({isEditTag: !this.state.isEditTag});
     console.log("Edit status is: " + this.state.isEditTag)
-    }
+    },
+  toggleTrueSelectProject: () => {
+      this.setState({isSelectProject: true});
+      console.log("Selected project is: " + this.state.isSelectProject)
+      },
+  toggleFalseSelectProject: () => {
+        this.setState({isSelectProject: false});
+        console.log("Selected project is: " + this.state.isSelectProject)
+        }
   }}>
   {this.props.children}
 </TagContext.Provider>
