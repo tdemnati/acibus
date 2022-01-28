@@ -1,15 +1,15 @@
-import * as React from 'react';
-import ProjectContext from '../Providers/ProjectProvider';
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Alert, Button } from 'react-bootstrap';
+import ProjectContext from '../Providers/ProjectProvider';
 
 
  
 
 function AcceptButton() {
     const myContext = useContext(ContentContext);
+    const projectContext = useContext(ProjectContext);
     let myvalue = myContext.state.value;
     let myText = myContext.state.TEXT;
     let myID = myContext.state.StructuredContentID;
@@ -149,17 +149,20 @@ function AcceptButton() {
 
     if (loading) return <p>Submitting...</p>;
     if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert><p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-    <Button size="sm" onClick={() => {
-      updateStructuredContent({ variables: { myID: myID}});
-    } }>ACCEPT</Button></>);
+    </>);
 
     return (
       <>
+      
+{projectContext.state.isSelectedProject ? "":
+<>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
         <Button size="sm" onClick={() => {
           updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfields}});
         }}>ACCEPT</Button>
-      </>
+        </>
+}
+</>
       
     );
   }

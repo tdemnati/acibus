@@ -11,6 +11,9 @@ class AnnotateText extends React.Component<any, any>{
             {(contentcontext)=> (
             <ProjectContext.Consumer>
               {(context)=> (
+
+                <>
+{context.state.isSelectedProject ? "":
               <TokenAnnotator
                   style={{
                     fontFamily: 'IBM Plex Sans',
@@ -27,6 +30,7 @@ class AnnotateText extends React.Component<any, any>{
                   }
                    )}
                 />
+    }</>
               )}
             </ProjectContext.Consumer>
             )}

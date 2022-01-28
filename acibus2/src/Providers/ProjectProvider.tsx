@@ -7,14 +7,13 @@ class ProjectProvider extends React.Component{
     value: [{}],
     tag: 'SBJ',
     color: '#ffe184',
-    tagList : [
-    ],
+    tagList : [],
     tagID:"any",
     mynewtag:'TAG',
     mynewcolor:'#0d6efd',
     isEditTag: true,
-    isSelectProject: true,
-    FolderID:0,
+    isSelectedProject: false,
+    FolderID:'0',
     FolderName:'MY PROJECTS',
     mytagList:[],
     TAGLIST:[]
@@ -29,7 +28,7 @@ return (
     this.setState({mytagList: contentFields});
   },
   setTagList:(mytaglists) =>{
-    this.setState({tagList: mytaglists})}
+    this.setState({tagList: mytaglists}, () => console.log(mytaglists))}
 
   ,
   onSelectProject: (id, name) => {
@@ -61,14 +60,14 @@ return (
     this.setState({isEditTag: !this.state.isEditTag});
     console.log("Edit status is: " + this.state.isEditTag)
     },
-  toggleTrueSelectProject: () => {
-      this.setState({isSelectProject: true});
-      console.log("Selected project is: " + this.state.isSelectProject)
-      },
-  toggleFalseSelectProject: () => {
-        this.setState({isSelectProject: false});
-        console.log("Selected project is: " + this.state.isSelectProject)
-        }
+  hideProject: () => {
+    this.setState({isSelectedProject: true});
+    console.log("Select Project is: " + this.state.isSelectedProject)
+    },
+  showProject: () => {
+    this.setState({isSelectedProject: false});
+    console.log("Select Project is: " + this.state.isSelectedProject)
+    }, 
   }}>
   {this.props.children}
 </ProjectContext.Provider>

@@ -1,6 +1,4 @@
-import * as React from 'react';
 import ProjectContext from '../Providers/ProjectProvider';
-import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
@@ -50,10 +48,6 @@ function AddContent() {
         }
       }
 `;
-
-
-
-
 
 
     const [createStructuredContentFolderStructuredContent, {data, loading, error}] = useMutation(ADD_FOLDER_STRUCTURED_CONTENT, {

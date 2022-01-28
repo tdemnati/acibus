@@ -13,7 +13,11 @@ function RadioTag() {
 
   //console.log(tagsdata);
         return (
+          <>
+          {myContext.state.isSelectedProject ? "":
+          
                         <div>
+                          
                         {myContext.state.tagList.map(({tag, color}, idx) => (
                             <ButtonGroup key={idx} size="sm">
                             <ToggleButton style={{marginLeft:5, backgroundColor:`${color}`, borderColor:`${color}`}}
@@ -65,7 +69,7 @@ function RadioTag() {
                         </div>}
                    
                         </div> 
-                        
+}</>     
                     
     )
     

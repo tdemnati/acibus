@@ -39,24 +39,24 @@ nestedContentFields {
 
 function StructuredContentList() {
   const contentcontext = useContext(ContentContext);
-  const tagcontext = useContext(ProjectContext);
+  const myContext = useContext(ProjectContext);
 
 
 
   const { loading, error, data } = useQuery(GET_STRUCTURED_CONTENTS, {
     variables: {
-      folderID: tagcontext.state.FolderID
+      folderID: myContext.state.FolderID
     }
   });
   
   if (loading) return <p>Submitting...</p>;
   if (error) return <Alert variant='info'>You'll find here the list of content once you've selected a project</Alert>;
-  console.log(data);
+  //console.log(data);
 
 
   return (
     <>
-    {tagcontext.state.isSelectProject ? "":
+      {myContext.state.isSelectedProject ? "":
       <div>
             {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
             <li key={id}>
@@ -65,8 +65,8 @@ function StructuredContentList() {
               {contentFields[0].contentFieldValue.data}
               </p>
             </li>))}
-      </div>}
-      
+      </div>
+    }
     </>
     
   );

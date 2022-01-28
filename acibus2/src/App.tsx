@@ -50,17 +50,10 @@ class App extends React.Component<any, any> {
           <Accordion.Body>
           
           <p className="settingsLabel">Select a project</p>
-          <Container>
-          <Row className="d-flex">
-          <Col>
           <SelectProject/>
-          </Col>
-          <Col>
-          <TagsList/>
-          </Col>
-          </Row>
-          </Container>
+          
           <br/>
+
           <p className="settingsLabel">Create a project</p>
           <AddProject></AddProject>
           </Accordion.Body>
