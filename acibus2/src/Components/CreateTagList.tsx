@@ -4,16 +4,14 @@ import { useContext } from 'react';
 import { Alert, Button, ButtonGroup, CloseButton, Spinner, ToggleButton } from 'react-bootstrap';
 import ContentContext from '../Providers/ContentProvider';
 import ProjectContext from '../Providers/ProjectProvider';
-import CreateTagList from './CreateTagList';
 import { GET_TAGS } from './SelectProject';
 
 //TODO: Create Mutation that will update values of taglist
 
-function ToggleEditTag() {
+function CreateTagList() {
   const myContext = useContext(ContentContext);
     const projectContext = useContext(ProjectContext);
     let myvalue = projectContext.state.tagList;
-    let myText = myContext.state.TEXT;
     let myID = projectContext.state.mytagListID;
 
     var n = myvalue.length;
@@ -52,10 +50,6 @@ function ToggleEditTag() {
       myContentfields.contentFields.push(
         {
           name: "FieldsGroup42444510",
-          contentFieldValue: 
-          { 
-            data: null 
-          },
           nestedContentFields: [
             {
               name: "tag",
@@ -78,10 +72,10 @@ function ToggleEditTag() {
     
     //let mysContentfields = myContentfields.contentFields;
     let mysContentfields = myContentfields.contentFields;
-    const UPDATE_STRUCTURED_CONTENT = gql`
-    mutation MyUpdateStructuredContent($myID: Long!, $mysContentfields: [InputContentField]){
-      updateStructuredContent(
-        structuredContentId: $myID
+    const CREATE_TAGLIST = gql`
+    mutation AddTagList($folderID: Long!, $mysContentfields: [InputContentField]){
+      createStructuredContentFolderStructuredContent(
+        structuredContentFolderId:$folderID,
         structuredContent: {
           contentStructureId: 70548
           title: "TagList"
@@ -106,23 +100,31 @@ function ToggleEditTag() {
       }
     }
 `;
-const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
+const [createStructuredContentFolderStructuredContent, {data, loading, error}] = useMutation(CREATE_TAGLIST, {
+  refetchQueries: [{query: GET_TAGS, 
+    variables: {folderID: projectContext.state.FolderID,
+    contentTEXT: "placeholder"}}],
+  awaitRefetchQueries: true,});
 
 if (loading) return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
-if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert>
+if (error) return (<><Button size="sm" onClick={() => {{
+  createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}});myContext.setTagListID(newTagListID)};
+}}>CREATE</Button>
 </>);
 
-console.log("tagListID is: " + projectContext.state.tagListID)
-console.log(projectContext.state.tagListID);
+let newTagListID = 0;
+if (data !== undefined) {let newTagListID = data.createStructuredContentFolderStructuredContent.id;} else {
+  let newTagListID = 0
+};
+
+console.log("new IDD value is" + newTagListID)
         return (
             <>
-            <Button size="sm" onClick={projectContext.toggleEditTag}>{projectContext.state.isEditTag ? "Edit" : "Unedit"}</Button>
-        <br/>
-        {projectContext.state.mytagListID == 0 || projectContext.state.mytagListID == undefined ? <CreateTagList/> :<Button size="sm" onClick={() => {
-          updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfields}});
-        }}>SAVE</Button>}
+          <Button size="sm" onClick={() => {{
+          createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}})};
+        }}>CREATE</Button>
             </>
     )
   }
   
-export default ToggleEditTag;
+export default CreateTagList;

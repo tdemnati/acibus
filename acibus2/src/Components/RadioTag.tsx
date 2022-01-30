@@ -11,27 +11,28 @@ import { useContext } from 'react';
 function RadioTag() {
   const myContext = useContext(ProjectContext);
 
-  //console.log(tagsdata);
         return (
           <>
           {myContext.state.isSelectedProject ? "":
           
                         <div>
-                          
+                          <ButtonGroup key="123">
                         {myContext.state.tagList.map(({tag, color}, idx) => (
-                            <ButtonGroup key={idx} size="sm">
-                            <ToggleButton style={{marginLeft:5, backgroundColor:`${color}`, borderColor:`${color}`}}
+                            
+                            <ToggleButton className='customToggleButton' style={{marginLeft:5, ['--mycolor' as any]:`${color}`, borderColor:`${color}`}}
                                 id={`radio-${idx}`}
+                                key={idx}
                                 type="radio"
                                 name="radio"
-                                value={tag}
+                                value={tag} 
                                 onChange={myContext.onSelectTag}
                                 checked={myContext.state.tag===tag}
+                                variant="outline-success"
                                 >
-                                {tag} {myContext.state.isEditTag ? "": <CloseButton variant="white" aria-label="Hide" value={tag} onClick={myContext.deleteItem}></CloseButton>}</ToggleButton>
+                                {tag} {myContext.state.isEditTag ? "": <CloseButton aria-label="Hide" value={tag} onClick={myContext.deleteItem}></CloseButton>}</ToggleButton>
                             
-                            </ButtonGroup>
-                        ))}
+                            
+                        ))}</ButtonGroup>
                         
                         {myContext.state.isEditTag ? "": <div style={{marginTop: 10}}>
 

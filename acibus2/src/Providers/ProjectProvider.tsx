@@ -16,7 +16,7 @@ class ProjectProvider extends React.Component{
     FolderID:'0',
     FolderName:'MY PROJECTS',
     mytagList:[],
-    TAGLIST:[]
+    mytagListID:''
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
@@ -26,6 +26,9 @@ return (
   state: this.state,
   onSelectProjectSet: (contentFields) => {
     this.setState({mytagList: contentFields});
+  },
+  setTagListID: (mytaglist) => {
+    this.setState({mytagListID: mytaglist}, () => console.log(mytaglist));
   },
   setTagList:(mytaglists) =>{
     this.setState({tagList: mytaglists}, () => console.log(mytaglists))}

@@ -1,7 +1,7 @@
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
-import { Alert, Button } from 'react-bootstrap';
+import { Alert, Button, Spinner } from 'react-bootstrap';
 import ProjectContext from '../Providers/ProjectProvider';
 
 
@@ -147,7 +147,9 @@ function AcceptButton() {
 //console.log(UPDATE_STRUCTURED_CONTENT);
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
 
-    if (loading) return <p>Submitting...</p>;
+    if (loading) return <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>;
     if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert><p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
     </>);
 
