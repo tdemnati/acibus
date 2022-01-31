@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { Alert, Button, ButtonGroup, CloseButton, Spinner, ToggleButton } from 'react-bootstrap';
 import ContentContext from '../Providers/ContentProvider';
 import ProjectContext from '../Providers/ProjectProvider';
-import { GET_TAGS } from './SelectProject';
+import { GET_STRUCTURED_CONTENT_FOLDERS, GET_TAGS } from './SelectProject';
 
 //TODO: Create Mutation that will update values of taglist
 
