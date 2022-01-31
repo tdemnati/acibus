@@ -24,11 +24,10 @@ return (
 <ProjectContext.Provider value={{ 
   state: this.state,
   setTagListID: (mytaglist) => {
-    this.setState({mytagListID: mytaglist}, () => console.log(mytaglist));
+    this.setState({mytagListID: mytaglist}, () => console.log(this.state.mytagListID));
   },
   setTagList:(mytaglists) =>{
-    this.setState({tagList: mytaglists}, () => console.log(mytaglists))}
-
+    this.setState({tagList: mytaglists}, () => console.log(this.state.tagList))}
   ,
   onSelectProject: (id, name) => {
     this.setState({FolderID: id}, ()=>console.log(this.state.FolderID));
@@ -59,12 +58,8 @@ return (
     this.setState({isEditTag: !this.state.isEditTag});
     console.log("Edit status is: " + this.state.isEditTag)
     },
-  hideProject: () => {
-    this.setState({isSelectedProject: false});
-    console.log("Select Project is: " + this.state.isSelectedProject)
-    },
   showProject: () => {
-    this.setState({isSelectedProject: true});
+    this.setState({isSelectedProject: false});
     console.log("Select Project is: " + this.state.isSelectedProject)
     }, 
   }}>

@@ -32,7 +32,7 @@ return (
         var array =[];
         var n = myvalue.length;
         //console.log(myvalue);
-        console.log(n);
+        //console.log(n);
         let start=0;
         let end=0;
         let tag = 'tag';

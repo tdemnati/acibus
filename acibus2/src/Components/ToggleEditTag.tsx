@@ -17,7 +17,7 @@ function ToggleEditTag() {
     let myID = projectContext.state.mytagListID;
 
     var n = myvalue.length;
-    console.log(n);
+    //console.log(n);
 
     type Data = string | null | number;
 
@@ -106,7 +106,7 @@ function ToggleEditTag() {
       }
     }
 `;
-const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
+const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT, {fetchPolicy: "no-cache",});
 
 if (loading) return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
 if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert>

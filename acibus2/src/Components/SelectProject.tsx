@@ -53,9 +53,11 @@ function SelectProject() {
     let myFolderID = myContext.state.FolderID;
     let myFolderName = myContext.state.FolderName;
 
-    const { loading: contentloading, error: contenterror, data: contentdata} = useQuery(GET_STRUCTURED_CONTENT_FOLDERS);
+    const { loading: contentloading, error: contenterror, data: contentdata} = useQuery(GET_STRUCTURED_CONTENT_FOLDERS, {
+      fetchPolicy: "no-cache"});
     const { loading: tagsloading, error: tagserror, data: tagsdata} = useQuery(GET_TAGS, 
       {
+        fetchPolicy: "no-cache",
         variables: {folderID: myFolderID},
         onCompleted: tagsdata => {
           //onClick={()=> {myContext.setTagList(arr);myContext.showProject()}};
@@ -76,7 +78,10 @@ function SelectProject() {
             )
                       );
          myContext.setTagList(arr);
-         myContext.hideProject();
+         console.log(tagsdata);
+         console.log(tagsdata.structuredContentFolderStructuredContents.items.length);
+         if(tagsdata.structuredContentFolderStructuredContents.items.length == 1) myContext.setTagListID(tagsdata.structuredContentFolderStructuredContents.items[0].id);
+         if(tagsdata.structuredContentFolderStructuredContents.items.length == 0) myContext.setTagListID(0);
         }
     });
 
@@ -84,20 +89,19 @@ function SelectProject() {
     if (contenterror) return <p>Loading error! ${contenterror.message}</p>;
 
     if (tagsloading) return <p>Loading...</p>;
-    if (tagserror) return <><p>An Error Occurred</p>
+    if (tagserror) return <><Alert variant='info'>Please select a project</Alert>
     <div className="settings">
-      <Col>
       <DropdownButton  size="sm" id="dropdown-item-button" title={myContext.state.FolderName}>
             {contentdata.structuredContentFolders.items.map(({id, name}) => (
             <Dropdown.Item as="button" 
             key={id}
             eventKey={id}
-            value={tagsdata}
-            onClick={() => {{myContext.onSelectProject(id, name);myContext.hideProject()}}}
+            value={name}
+            onClick={() => {{myContext.onSelectProject(id, name);myContext.showProject()}}}
             >{name}</Dropdown.Item>
         ))
     }
-    </DropdownButton></Col>
+    </DropdownButton>
     </div>
   </>;
   
@@ -107,18 +111,17 @@ function SelectProject() {
     return (
       <>
         <div className="settings">
-          <Col>
           <DropdownButton  size="sm" id="dropdown-item-button" title={myContext.state.FolderName}>
                 {contentdata.structuredContentFolders.items.map(({id, name}) => (
                 <Dropdown.Item as="button" 
                 key={id}
                 eventKey={id}
-                value={tagsdata}
-                onClick={() => {{myContext.onSelectProject(id, name);myContext.hideProject()}}}
+                value={name}
+                onClick={() => {{myContext.onSelectProject(id, name);myContext.showProject()}}}
                 >{name}</Dropdown.Item>
             ))
         }
-        </DropdownButton></Col>
+        </DropdownButton>
         </div>
       </>
       

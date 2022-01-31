@@ -27,12 +27,7 @@ function AddProject() {
     const [createSiteStructuredContentFolder, {data, loading, error}] = useMutation(ADD_SITE_STRUCTURED_CONTENT_FOLDER,
        {
       refetchQueries: 
-      [
-        {query: GET_STRUCTURED_CONTENT_FOLDERS, 
-        variables: {
-          folderName: "placeholder",
-          folderDescription: "placeholder"}
-        }
+      [GET_STRUCTURED_CONTENT_FOLDERS
       ],
       onCompleted: data => {projectContext.onSelectProject(data.createSiteStructuredContentFolder.id, data.createSiteStructuredContentFolder.name)}
     }
