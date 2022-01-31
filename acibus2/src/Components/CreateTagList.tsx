@@ -15,7 +15,7 @@ function CreateTagList() {
     let myID = projectContext.state.mytagListID;
 
     var n = myvalue.length;
-    console.log(n);
+    //console.log(n);
 
     type Data = string | null | number;
 
@@ -68,7 +68,7 @@ function CreateTagList() {
         );
     };
     //console.log(myContentfields);
-    console.log(myID);
+    //console.log(myID);
     
     //let mysContentfields = myContentfields.contentFields;
     let mysContentfields = myContentfields.contentFields;
@@ -101,28 +101,21 @@ function CreateTagList() {
     }
 `;
 const [createStructuredContentFolderStructuredContent, {data, loading, error}] = useMutation(CREATE_TAGLIST, {
-  refetchQueries: [{query: GET_TAGS, 
-    variables: {folderID: projectContext.state.FolderID,
-    contentTEXT: "placeholder"}}],
-  awaitRefetchQueries: true,});
+  onCompleted: data => {
+    console.log(data);
+    projectContext.setTagListID(data.createStructuredContentFolderStructuredContent.id);
+  }
+});
+
 
 if (loading) return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
-if (error) return (<><Button size="sm" onClick={() => {{
-  createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}});myContext.setTagListID(newTagListID)};
-}}>CREATE</Button>
-</>);
+if (error) return (<p>Error happened</p>);
 
-let newTagListID = 0;
-if (data !== undefined) {let newTagListID = data.createStructuredContentFolderStructuredContent.id;} else {
-  let newTagListID = 0
-};
-
-console.log("new IDD value is" + newTagListID)
         return (
             <>
-          <Button size="sm" onClick={() => {{
-          createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}})};
-        }}>CREATE</Button>
+          <Button size="sm" type="submit" onClick={() => 
+          {createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}})}
+}>CREATE</Button>
             </>
     )
   }

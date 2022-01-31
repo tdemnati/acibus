@@ -74,7 +74,7 @@ function ToggleEditTag() {
         );
     };
     //console.log(myContentfields);
-    console.log(myID);
+    //console.log(myID);
     
     //let mysContentfields = myContentfields.contentFields;
     let mysContentfields = myContentfields.contentFields;
@@ -112,8 +112,8 @@ if (loading) return <Spinner animation="border" role="status"><span className="v
 if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert>
 </>);
 
-console.log("tagListID is: " + projectContext.state.tagListID)
-console.log(projectContext.state.tagListID);
+//console.log("tagListID is: " + projectContext.state.tagListID)
+//console.log(projectContext.state.tagListID);
         return (
             <>
             <Button size="sm" onClick={projectContext.toggleEditTag}>{projectContext.state.isEditTag ? "Edit" : "Unedit"}</Button>

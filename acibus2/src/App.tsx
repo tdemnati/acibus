@@ -14,8 +14,6 @@ import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
 import AddContent from './Components/AddContent';
 import AcceptButton from './Components/AcceptButton';
-import TagsList from './Components/TagsList';
-import CreateTagList from './Components/CreateTagList';
 
 /* const Card = ({children}) => (
   <div

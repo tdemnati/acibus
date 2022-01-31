@@ -12,10 +12,9 @@ class ProjectProvider extends React.Component{
     mynewtag:'TAG',
     mynewcolor:'#0d6efd',
     isEditTag: true,
-    isSelectedProject: false,
+    isSelectedProject: true,
     FolderID:'0',
     FolderName:'MY PROJECTS',
-    mytagList:[],
     mytagListID:''
   }
   //Set initial taglist state
@@ -24,9 +23,6 @@ class ProjectProvider extends React.Component{
 return (
 <ProjectContext.Provider value={{ 
   state: this.state,
-  onSelectProjectSet: (contentFields) => {
-    this.setState({mytagList: contentFields});
-  },
   setTagListID: (mytaglist) => {
     this.setState({mytagListID: mytaglist}, () => console.log(mytaglist));
   },
@@ -35,8 +31,8 @@ return (
 
   ,
   onSelectProject: (id, name) => {
-    this.setState({FolderID: id});
-    this.setState({FolderName: name});
+    this.setState({FolderID: id}, ()=>console.log(this.state.FolderID));
+    this.setState({FolderName: name}, ()=>console.log(this.state.FolderName));
     console.log('FolderID: '  + id);
     console.log('FolderName: ' + name);
   },
@@ -64,11 +60,11 @@ return (
     console.log("Edit status is: " + this.state.isEditTag)
     },
   hideProject: () => {
-    this.setState({isSelectedProject: true});
+    this.setState({isSelectedProject: false});
     console.log("Select Project is: " + this.state.isSelectedProject)
     },
   showProject: () => {
-    this.setState({isSelectedProject: false});
+    this.setState({isSelectedProject: true});
     console.log("Select Project is: " + this.state.isSelectedProject)
     }, 
   }}>
