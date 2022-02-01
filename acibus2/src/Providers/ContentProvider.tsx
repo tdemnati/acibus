@@ -82,9 +82,11 @@ return (
               //console.log('something');
             }
         }
+        if (end !== 0) {
         array[i-1]={color, end, start, tag, tokens};
         
         array.push(array[i-1]);
+      }
         tokens=[];
         }
         //console.log('The Text is: ' + myvalue[0].contentFieldValue.data);

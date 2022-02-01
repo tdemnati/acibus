@@ -19,7 +19,7 @@ const Mark: React.FC<MarkProps> = props => (
   >
     {props.content}
     {props.tag && (
-      <span style={{fontSize: '1em', fontWeight: 1000, marginLeft: 6, marginTop:3}}>{props.tag}</span>
+      <span style={{fontSize: '0.8em', fontWeight: 1000, marginLeft: 6, marginTop:3}}>{props.tag}</span>
     )}
   </mark>
 )
