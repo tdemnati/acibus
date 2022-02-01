@@ -1,12 +1,8 @@
-import * as React from 'react';
 import ProjectContext from '../Providers/ProjectProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, ButtonGroup, CloseButton, Col, Dropdown, DropdownButton, Form, FormControl, InputGroup, Row, ToggleButton } from 'react-bootstrap';
-import { gql, useQuery } from '@apollo/client';
+import { Button, ButtonGroup, CloseButton, Col, Form, Row, ToggleButton } from 'react-bootstrap';
 import { useContext } from 'react';
-
-
-
+import SaveTags from './SaveTags';
 
 function RadioTag() {
   const myContext = useContext(ProjectContext);
@@ -57,19 +53,16 @@ function RadioTag() {
   <Row  className="mb-3">
   <Form.Group as={Col} controlId="formGridColor">
   <Button size="sm" onClick={myContext.addTag} variant="primary" type="button">
-    Add
+    Add Tag
   </Button>
   </Form.Group>
-  <Form.Group as={Col} controlId="formGridColor">
-  <Button style={{marginLeft: 10}} size="sm" onClick={myContext.resetTag}>Reset</Button>
-  </Form.Group>
+  <Col>
+  <SaveTags/>
+  </Col>
   </Row>
-
 </Form>
-
-                        </div>}
-                   
-                        </div> 
+</div>}
+</div> 
 }</>     
                     
     )

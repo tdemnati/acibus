@@ -51,7 +51,6 @@ nestedContentFields {
 function SelectProject() {
     const myContext = useContext(ProjectContext);
     let myFolderID = myContext.state.FolderID;
-    let myFolderName = myContext.state.FolderName;
 
     const { loading: contentloading, error: contenterror, data: contentdata} = useQuery(GET_STRUCTURED_CONTENT_FOLDERS, {
       fetchPolicy: "no-cache"});
