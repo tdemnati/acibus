@@ -115,7 +115,7 @@ if (error) return (<p>Error happened</p>);
             <>
           <Button size="sm" type="submit" onClick={() => 
           {createStructuredContentFolderStructuredContent({ variables: { folderID: projectContext.state.FolderID, mysContentfields:mysContentfields}})}
-}>CREATE</Button>
+}>SAVE</Button>
             </>
     )
   }

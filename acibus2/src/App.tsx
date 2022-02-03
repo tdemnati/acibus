@@ -14,19 +14,8 @@ import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
 import AddContent from './Components/AddContent';
 import AcceptButton from './Components/AcceptButton';
+import Guideline from './Components/Guideline';
 
-/* const Card = ({children}) => (
-  <div
-    style={{
-      boxShadow: '0 2px 4px rgba(0,0,0,.1)',
-      margin: 6,
-      padding: 16,
-      backgroundColor: 'white',
-    }}
-  >
-    {children}
-  </div>
-) */
 
 class App extends React.Component<any, any> {
 
@@ -81,7 +70,8 @@ class App extends React.Component<any, any> {
           <Accordion.Header>GUIDELINES</Accordion.Header>
           <Accordion.Body>
           <div className="section">
-          <p>Some settings</p>
+          <p className="settingsLabel">Add/update the guideline</p>
+          <Guideline/>
           </div>
           </Accordion.Body>
           </Accordion.Item>

@@ -89,12 +89,15 @@ return (
       }
         tokens=[];
         }
+
         //console.log('The Text is: ' + myvalue[0].contentFieldValue.data);
-        
+        console.log("the value of END is : " + end);
         //this.setState({MYVALUE: myvalue});
         //console.log('MY VALUE');
+
         this.setState({value: array.slice(0,n-1)},
           () => console.log(this.state.value));
+
         //console.log('value');
         //console.log(this.state.value);
      }

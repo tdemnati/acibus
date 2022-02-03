@@ -156,7 +156,24 @@ function AcceptButton() {
     return (
       <>
       
-{projectContext.state.isSelectedProject ? "":
+{end == 0 ? <>
+        <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
+        <Button size="sm" onClick={() => {
+          updateStructuredContent({ variables: { myID: myID, mysContentfields:[
+            { name: "text", contentFieldValue: { data: myText } },
+            {
+              name: "FieldsGroup13487557",
+              contentFieldValue: { data: null },
+              nestedContentFields: [
+                {
+                  name: "FieldsGroup30533882",
+                  contentFieldValue: { data: null }
+                }
+              ]
+            }
+          ]}});
+        }}>ACCEPT</Button>
+        </>:
 <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
         <Button size="sm" onClick={() => {
