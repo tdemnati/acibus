@@ -128,11 +128,11 @@ mutation MyUpdateStructuredContent($myID: Long!, $contentGUIDELINE: String!){
         {tagcontext.state.guideLineID == 0 || tagcontext.state.guideLineID == undefined ? <Button  size="sm" onClick={e => {
         e.preventDefault();
         createStructuredContentFolderStructuredContent({ variables: { folderID: tagcontext.state.FolderID,
-          contentGUIDELINE: tagcontext.state.guideLineChange } });
+          contentGUIDELINE: tagcontext.state.guideLineChange } });tagcontext.setGuideline(tagcontext.state.guideLineChange);
           inputcontentGUIDELINE ='';
       }}>Add Guideline</Button> :<Button size="sm" onClick={() => {
           updateStructuredContent({ variables: { myID: tagcontext.state.guideLineID,
-            contentGUIDELINE: tagcontext.state.guideLineChange}});
+            contentGUIDELINE: tagcontext.state.guideLineChange}});tagcontext.setGuideline(tagcontext.state.guideLineChange)
         }}>SAVE</Button>}
 </>
 

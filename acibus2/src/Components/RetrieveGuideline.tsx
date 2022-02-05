@@ -40,21 +40,20 @@ nestedContentFields {
 
 function RetrieveGuideline() {
   const myContext = useContext(ProjectContext);
-  const [show, setShow] = useState(true);
-
+  const [show, setShow] = useState(false);
 
   const { loading, error, data } = useQuery(GET_GUIDELINES, {
   fetchPolicy: "no-cache",
     variables: {
       folderID: myContext.state.FolderID
     },
-    onCompleted: guidelinedata => {
+    onCompleted: data => {
       if(data.structuredContentFolderStructuredContents.items.length == 1) {
         myContext.setGuidelineID(data.structuredContentFolderStructuredContents.items[0].id);
         myContext.setGuideline(data.structuredContentFolderStructuredContents.items[0].contentFields[0].contentFieldValue.data);
       console.log(data.structuredContentFolderStructuredContents.items[0].contentFields[0].contentFieldValue.data);
       };
-      if(data.structuredContentFolderStructuredContents.items.length == 0) myContext.setGuidelineID(0);
+      if(data.structuredContentFolderStructuredContents.items.length == 0) {myContext.setGuidelineID(0);myContext.setGuideline('');};
       //console.log(data.structuredContentFolderStructuredContents.items[0].id);
       //myContext.setGuidelineID(data.structuredContentFolderStructuredContents.items[0].id);
     },
@@ -71,12 +70,9 @@ function RetrieveGuideline() {
       <Alert show={show} variant="light">
         <Alert.Heading>Instructions</Alert.Heading>
         {myContext.state.isSelectedProject ? "No Instructions":
-      <div>
-            {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
-            <div key={id} dangerouslySetInnerHTML={{__html:
-              contentFields[0].contentFieldValue.data.toString()}}/>
-            ))}
-      </div>
+            <div key={uuidv4()} dangerouslySetInnerHTML={{__html:
+              myContext.state.guideLine}}/>
+
     }
         <hr />
         <div className="d-flex justify-content-end">

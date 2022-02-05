@@ -42,7 +42,7 @@ return (
   addTag: () => {this.setState({tagList: [...this.state.tagList, {tag: this.state.mynewtag, color: this.state.mynewcolor}]})},
   onGuidelineChange: (mydata) => {this.setState({guideLineChange: mydata})},
   setGuidelineID: (mydata) => {this.setState({guideLineID: mydata})},
-  setGuideline: (mydata) => {this.setState({guideLine: mydata})},
+  setGuideline: (mydata) => {this.setState({guideLine: mydata}, ()=>console.log(this.state.guideLine))},
   resetTag: () => {
     this.setState({tagList: this.initialtagList});
     console.log("State is: " + JSON.stringify(this.state));
