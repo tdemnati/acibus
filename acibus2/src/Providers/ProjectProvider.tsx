@@ -15,7 +15,9 @@ class ProjectProvider extends React.Component{
     isSelectedProject: true,
     FolderID:'0',
     FolderName:'MY PROJECTS',
-    mytagListID:''
+    mytagListID:'',
+    guideLine:'',
+    guideLineID:''
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
@@ -38,6 +40,9 @@ return (
   onSelectTag: e => {this.setState({tag: e.currentTarget.value})},
   onSelectText: value => {this.setState({value})},
   addTag: () => {this.setState({tagList: [...this.state.tagList, {tag: this.state.mynewtag, color: this.state.mynewcolor}]})},
+  onGuidelineChange: (mydata) => {this.setState({guideLineChange: mydata})},
+  setGuidelineID: (mydata) => {this.setState({guideLineID: mydata})},
+  setGuideline: (mydata) => {this.setState({guideLine: mydata})},
   resetTag: () => {
     this.setState({tagList: this.initialtagList});
     console.log("State is: " + JSON.stringify(this.state));

@@ -106,8 +106,7 @@ function SaveTags() {
 const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT, {fetchPolicy: "no-cache",});
 
 if (loading) return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
-if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert>
-</>);
+if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert></>);
 
         return (
         <>

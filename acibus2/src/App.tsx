@@ -14,7 +14,8 @@ import AcibusNavBAr from './Components/AcibusNavBar';
 import AddProject from './Components/AddProject';
 import AddContent from './Components/AddContent';
 import AcceptButton from './Components/AcceptButton';
-import Guideline from './Components/Guideline';
+import AddGuideline from './Components/AddGuideline';
+import RetrieveGuideline from './Components/RetrieveGuideline';
 
 
 class App extends React.Component<any, any> {
@@ -71,7 +72,7 @@ class App extends React.Component<any, any> {
           <Accordion.Body>
           <div className="section">
           <p className="settingsLabel">Add/update the guideline</p>
-          <Guideline/>
+          <AddGuideline/>
           </div>
           </Accordion.Body>
           </Accordion.Item>
@@ -113,6 +114,12 @@ class App extends React.Component<any, any> {
           </Card>
         </Col>
         <Col  xs={4}>
+        <br />
+        <Card>
+            <Card.Body>
+        <RetrieveGuideline/>
+        </Card.Body>
+          </Card>
         <br />
         <Card>
             <Card.Body>

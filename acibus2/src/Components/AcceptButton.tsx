@@ -153,25 +153,26 @@ function AcceptButton() {
     if (error) return (<><Alert variant='warning'>Select first a content from the content list</Alert><p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
     </>);
 
+let mysContentfieldsEND = [
+  { name: "text", contentFieldValue: { data: myText } },
+  {
+    name: "FieldsGroup13487557",
+    contentFieldValue: { data: null },
+    nestedContentFields: [
+      {
+        name: "FieldsGroup30533882",
+        contentFieldValue: { data: null }
+      }
+    ]
+  }
+];
     return (
       <>
       
 {end == 0 ? <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
         <Button size="sm" onClick={() => {
-          updateStructuredContent({ variables: { myID: myID, mysContentfields:[
-            { name: "text", contentFieldValue: { data: myText } },
-            {
-              name: "FieldsGroup13487557",
-              contentFieldValue: { data: null },
-              nestedContentFields: [
-                {
-                  name: "FieldsGroup30533882",
-                  contentFieldValue: { data: null }
-                }
-              ]
-            }
-          ]}});
+          updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfieldsEND}});
         }}>ACCEPT</Button>
         </>:
 <>

@@ -5,6 +5,7 @@ import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
 import { GET_STRUCTURED_CONTENT_FOLDERS, GET_TAGS } from './SelectProject';
 import ProjectContext from '../Providers/ProjectProvider';
+import { GET_GUIDELINES } from './RetrieveGuideline';
 
 
  
@@ -27,7 +28,7 @@ function AddProject() {
     const [createSiteStructuredContentFolder, {data, loading, error}] = useMutation(ADD_SITE_STRUCTURED_CONTENT_FOLDER,
        {
       refetchQueries: 
-      [GET_STRUCTURED_CONTENT_FOLDERS
+      [GET_STRUCTURED_CONTENT_FOLDERS, GET_GUIDELINES
       ],
       onCompleted: data => {projectContext.onSelectProject(data.createSiteStructuredContentFolder.id, data.createSiteStructuredContentFolder.name)}
     }
