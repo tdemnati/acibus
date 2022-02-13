@@ -2,7 +2,7 @@ import { Container, Nav, Navbar, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo_acibus from '../images/logo_acibus.svg'
 
-function AcibusNavBAr() {
+function AcibusNavBar() {
 
   return (
 <>
@@ -32,4 +32,4 @@ function AcibusNavBAr() {
 </>);
 }
 
-export default AcibusNavBAr
+export default AcibusNavBar

@@ -1,22 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import * as React from 'react';
 import './App.css';
 import {ProjectProvider} from './Providers/ProjectProvider';
 import {ContentProvider} from './Providers/ContentProvider';
-
-import ToggleEditTag from './Components/ToggleEditTag';
 import RadioTag from './Components/RadioTag';
 import AnnotateText from './Components/AnnotateText';
 import StructuredContentList from './Components/StructuredContentList';
-import { Accordion, Card, Col, Container, Row } from 'react-bootstrap';
-import SelectProject from './Components/SelectProject';
-import AcibusNavBAr from './Components/AcibusNavBar';
-import AddProject from './Components/AddProject';
-import AddContent from './Components/AddContent';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import AcibusNavBar from './Components/AcibusNavBar';
 import AcceptButton from './Components/AcceptButton';
-import AddGuideline from './Components/AddGuideline';
 import RetrieveGuideline from './Components/RetrieveGuideline';
-
+import AcibusSideBar from './Components/AcibusSideBar';
+import ProjectManager from './Components/ProjectManager';
 
 class App extends React.Component<any, any> {
 
@@ -25,72 +21,14 @@ class App extends React.Component<any, any> {
     return (
       
     <div>
-      <AcibusNavBAr/>
+      <AcibusNavBar/>
       <ContentProvider>
       <ProjectProvider>
-      <Container>
+      <Container fluid>
       <Row>
-        <Col   xs={3}>
-          
-          <Accordion defaultActiveKey="1" flush>
-          
-          <Accordion.Item eventKey="1">
-          <Accordion.Header>PROJECTS</Accordion.Header>
-          <Accordion.Body>
-          
-          <p className="settingsLabel">Select a project</p>
-          <SelectProject/>
-          
-          <br/>
-
-          <p className="settingsLabel">Create a project</p>
-          <AddProject></AddProject>
-          </Accordion.Body>
-          
-          <Accordion.Item eventKey="2">
-          <Accordion.Header>TAGS</Accordion.Header>
-          <Accordion.Body>
-          <div className="settings">
-          <p className="settingsLabel">Edit tags</p>
-          <ToggleEditTag/>
-          </div>
-          </Accordion.Body>
-          </Accordion.Item>
-
-
-          </Accordion.Item>
-          <Accordion.Item eventKey="3">
-          <Accordion.Header>CONTENTS</Accordion.Header>
-          <Accordion.Body>
-          <p className="settingsLabel">Add content</p>
-          <AddContent/>
-          </Accordion.Body>
-          </Accordion.Item>
-          
-          <Accordion.Item eventKey="4">
-          <Accordion.Header>GUIDELINES</Accordion.Header>
-          <Accordion.Body>
-          <div className="section">
-          <p className="settingsLabel">Add/update the guideline</p>
-          <AddGuideline/>
-          </div>
-          </Accordion.Body>
-          </Accordion.Item>
-
-          <Accordion.Item eventKey="5">
-          <Accordion.Header>TEAM</Accordion.Header>
-          <Accordion.Body>
-          <div className="section">
-          <p>Select Project Members</p>
-          </div>
-          </Accordion.Body>
-          </Accordion.Item>
-
-          </Accordion>
-        </Col>
+        <AcibusSideBar/>
         <br />
-        <Col>
-        <br />
+        <Col xs={3}>
           <Card>
           <Card.Header>Choose a Tag</Card.Header>
             <Card.Body>
@@ -101,7 +39,6 @@ class App extends React.Component<any, any> {
           <Card>
           <Card.Header>Annotate Text</Card.Header>
             <Card.Body>
-            
             <AnnotateText/>
             </Card.Body>
           </Card>
@@ -113,8 +50,7 @@ class App extends React.Component<any, any> {
             </Card.Body>
           </Card>
         </Col>
-        <Col  xs={4}>
-        <br />
+        <Col  xs={5}>
         <Card>
             <Card.Body>
         <RetrieveGuideline/>

@@ -4,6 +4,9 @@ const ProjectContext = React.createContext(undefined!);
 
 class ProjectProvider extends React.Component{
   state = {
+    isSelectedProject: true,
+    FolderID:'0',
+    FolderName:'MY PROJECTS',
     value: [{}],
     tag: 'SBJ',
     color: '#ffe184',
@@ -12,9 +15,6 @@ class ProjectProvider extends React.Component{
     mynewtag:'TAG',
     mynewcolor:'#0d6efd',
     isEditTag: true,
-    isSelectedProject: true,
-    FolderID:'0',
-    FolderName:'MY PROJECTS',
     mytagListID:'',
     guideLine:'',
     guideLineID:''
@@ -66,7 +66,15 @@ return (
   showProject: () => {
     this.setState({isSelectedProject: false});
     console.log("Select Project is: " + this.state.isSelectedProject)
-    }, 
+    },
+  hideProject: () => {
+    this.setState({isSelectedProject: true});
+    console.log("Select Project is: " + this.state.isSelectedProject)
+    },
+  setShowProject: () => {
+      this.setState({isSelectedProject: !this.state.isSelectedProject});
+      console.log("isSelectedProject is: " + this.state.isSelectedProject)
+      },
   }}>
   {this.props.children}
 </ProjectContext.Provider>

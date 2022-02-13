@@ -118,7 +118,7 @@ mutation MyUpdateStructuredContent($myID: Long!, $contentGUIDELINE: String!){
         onBlur={ ( event, editor ) => {
             console.log( 'Blur.', editor );
         } }
-        onFocus={ ( event, editor ) => {
+        onFocus={ ( event, editor ) => { 
             console.log( 'Focus.', editor );
         } }
     />
