@@ -5,6 +5,8 @@ const ProjectContext = React.createContext(undefined!);
 class ProjectProvider extends React.Component{
   state = {
     isSelectedProject: true,
+    isSelectedSideProject: true,
+    isSelectedResults: true,
     FolderID:'0',
     FolderName:'MY PROJECTS',
     value: [{}],
@@ -73,8 +75,32 @@ return (
     },
   setShowProject: () => {
       this.setState({isSelectedProject: !this.state.isSelectedProject});
-      console.log("isSelectedProject is: " + this.state.isSelectedProject)
+      console.log("Select Project is: " + this.state.isSelectedProject)
       },
+  showResults: () => {
+    this.setState({isSelectedResults: false});
+    console.log("Show Results is: " + this.state.isSelectedResults)
+    },
+  hideResults: () => {
+    this.setState({isSelectedResults: true});
+    console.log("Show Results is: " + this.state.isSelectedResults)
+    },
+  setShowResults: () => {
+      this.setState({isSelectedResults: !this.state.isSelectedResults});
+      console.log("Show Results is: " + this.state.isSelectedResults)
+      },
+  showSideProject: () => {
+    this.setState({isSelectedSideProject: false});
+    console.log("Select Side Project is: " + this.state.isSelectedSideProject)
+    },
+  hideSideProject: () => {
+    this.setState({isSelectedSideProject: true});
+    console.log("Select Side Project is: " + this.state.isSelectedSideProject)
+    },
+  setSideShowProject: () => {
+      this.setState({isSelectedSideProject: !this.state.isSelectedSideProject});
+      console.log("Select Side Project is: " + this.state.isSelectedSideProject)
+      }
   }}>
   {this.props.children}
 </ProjectContext.Provider>

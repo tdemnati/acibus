@@ -21,9 +21,9 @@ class App extends React.Component<any, any> {
     return (
       
     <div>
-      <AcibusNavBar/>
       <ContentProvider>
       <ProjectProvider>
+      <AcibusNavBar/>
       <Container fluid>
       <Row>
         <AcibusSideBar/>

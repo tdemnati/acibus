@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo_acibus from '../images/logo_acibus.svg'
+import SelectProject from './SelectProject';
 
 function AcibusNavBar() {
 
@@ -17,6 +18,9 @@ function AcibusNavBar() {
         height="30"
         className="d-inline-block align-top"/>
     </Navbar.Brand>
+    </Row>
+    <Row>
+      <SelectProject/>
     </Row>
     <Row>
     <Nav className="me-auto">

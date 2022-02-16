@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
-import { Accordion, Button, ButtonGroup, Col, Nav, Navbar, Offcanvas } from "react-bootstrap";
-import plus_square from '../images/plus_square.svg'
-import clipboard2_data from '../images/clipboard2_data.svg'
+import { useContext } from "react";
+import { Button, ButtonGroup, Col, Nav, Navbar } from "react-bootstrap";
 import ProjectManager from "./ProjectManager";
 import ProjectContext from "../Providers/ProjectProvider";
+import ResultManager from "./ResultManager";
 
 function AcibusSideBar() {
   const projectContext = useContext(ProjectContext);
@@ -14,24 +13,32 @@ function AcibusSideBar() {
         <Navbar bg="light" style={{width:50}}>
         <Nav className="flex-column">
         <ButtonGroup vertical>
-        {projectContext.state.isSelectedProject ?
-        <Button size="sm" onClick={() => projectContext.setShowProject()} variant="secondary">
+        {projectContext.state.isSelectedSideProject ?
+        <Button onClick={() => {projectContext.hideResults();projectContext.setSideShowProject()}} variant="secondary">
             <i className="bi bi-card-list"></i>
             </Button>
             :
-            <Button size="sm" onClick={() => projectContext.setShowProject()} variant="outline-secondary">
+            <Button onClick={() => {projectContext.hideResults();projectContext.setSideShowProject()}} variant="outline-secondary">
             <i className="bi bi-card-list"></i>
             </Button>
         }
-            <Button size="sm" onClick={() => projectContext.hideProject()} variant="secondary">
+        {projectContext.state.isSelectedResults ?
+            <Button onClick={() => {projectContext.hideSideProject();projectContext.setShowResults()}} variant="secondary">
+            <i className="bi bi-bar-chart-line"></i>
+            </Button>:
+            <Button onClick={() => {projectContext.hideSideProject();projectContext.setShowResults()}} variant="outline-secondary">
             <i className="bi bi-bar-chart-line"></i>
             </Button>
+            }
         </ButtonGroup>
         </Nav>
         </Navbar>
         </Col>
-        {projectContext.state.isSelectedProject ? "":
+        {projectContext.state.isSelectedSideProject ? "":
         <ProjectManager/>
+    }
+        {projectContext.state.isSelectedResults ? "":
+        <ResultManager/>
     }
       </>
     );
