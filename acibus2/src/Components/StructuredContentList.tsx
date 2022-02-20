@@ -61,9 +61,14 @@ function StructuredContentList() {
             {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
+              <div className="Settings">
               <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, contentFields[0].contentFieldValue.data, contentFields)} className="mylist">
               {contentFields[0].contentFieldValue.data}
               </p>
+              <p>
+                
+              </p>
+              </div>
             </li>))}
       </div>
     }

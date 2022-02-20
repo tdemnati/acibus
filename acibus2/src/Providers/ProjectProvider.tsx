@@ -19,7 +19,9 @@ class ProjectProvider extends React.Component{
     isEditTag: true,
     mytagListID:'',
     guideLine:'',
-    guideLineID:''
+    guideLineID:'',
+    contentList : [],
+    contentID: "any"
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
@@ -31,8 +33,14 @@ return (
     this.setState({mytagListID: mytaglist}, () => console.log(this.state.mytagListID));
   },
   setTagList:(mytaglists) =>{
-    this.setState({tagList: mytaglists}, () => console.log(this.state.tagList))}
-  ,
+    this.setState({tagList: mytaglists}, () => console.log(this.state.tagList))
+  },
+  setContentID: (mycontentid) => {
+    this.setState({contentID: mycontentid}, () => console.log(this.state.contentID));
+  },
+  setContentList:(mycontentlist) =>{
+    this.setState({contentList: mycontentlist}, () => console.log(this.state.contentList))
+  },
   onSelectProject: (id, name) => {
     this.setState({FolderID: id}, ()=>console.log(this.state.FolderID));
     this.setState({FolderName: name}, ()=>console.log(this.state.FolderName));

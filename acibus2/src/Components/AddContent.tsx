@@ -3,9 +3,11 @@ import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
 import { GET_STRUCTURED_CONTENTS } from './StructuredContentList';
+import ContentContext from '../Providers/ContentProvider';
 
 function AddContent() {
-    const tagcontext = useContext(ProjectContext);
+    const projectcontext = useContext(ProjectContext);
+    const contentcontext = useContext(ContentContext);
       const ADD_FOLDER_STRUCTURED_CONTENT = gql`
       mutation addStructuredContent($folderID: Long!, $contentTEXT: String!){
         createStructuredContentFolderStructuredContent(
@@ -33,6 +35,7 @@ function AddContent() {
       }  ){
           id
           title
+          keywords
           contentFields {
                 name
                 contentFieldValue {
@@ -50,9 +53,13 @@ function AddContent() {
 `;
 
 
-    const [createStructuredContentFolderStructuredContent, {data, loading, error}] = useMutation(ADD_FOLDER_STRUCTURED_CONTENT, {
+    const [createStructuredContentFolderStructuredContent, {data: contentdata, loading, error}] = useMutation(ADD_FOLDER_STRUCTURED_CONTENT, {
       refetchQueries: [{query: GET_STRUCTURED_CONTENTS, 
-        variables: {folderID: tagcontext.state.FolderID,
+        variables: {folderID: projectcontext.state.FolderID,
+        onCompleted: contentdata => {
+          //contentcontext.newtext(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, contentdata.createStructuredContentFolderStructuredContent.contentFields);
+          console.log(contentdata);
+        },
         contentTEXT: "placeholder"}}],
       awaitRefetchQueries: true,
     });
@@ -69,7 +76,7 @@ function AddContent() {
     <Form
       onSubmit={e => {
         e.preventDefault();
-        createStructuredContentFolderStructuredContent({ variables: { folderID: tagcontext.state.FolderID,
+        createStructuredContentFolderStructuredContent({ variables: { folderID: projectcontext.state.FolderID,
           contentTEXT: inputcontentTEXT.value } });
           inputcontentTEXT ='';
       }}

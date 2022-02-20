@@ -123,6 +123,7 @@ function AcceptButton() {
         structuredContent: {
           contentStructureId: 66167
           title: "My Content"
+          keywords: ["ACCEPTED"]
           contentFields: $mysContentfields
         }
       ) {
