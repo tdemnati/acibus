@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { gql } from '@apollo/react-hoc';
 import { Alert, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
+import ContentContext from '../Providers/ContentProvider';
 
 
 export const GET_STRUCTURED_CONTENT_FOLDERS = gql`
@@ -84,6 +85,7 @@ nestedContentFields {
 function SelectProject() {
     const myContext = useContext(ProjectContext);
     let myFolderID = myContext.state.FolderID;
+    const myContent = useContext(ContentContext);
 
     const { loading: contentloading, error: contenterror, data: contentdata} = useQuery(GET_STRUCTURED_CONTENT_FOLDERS, {
       fetchPolicy: "no-cache"});
@@ -132,7 +134,8 @@ function SelectProject() {
                                         {
                                           text: contentFields[0].contentFieldValue.data,
                                           status : keywords.toString(),
-                                          id : id
+                                          id : id,
+                                          contentFields: contentFields
                                         }
                                       )
 
@@ -140,8 +143,8 @@ function SelectProject() {
          myContext.setContentList(arr1);
          console.log(contentlistdata);
          console.log(contentlistdata.structuredContentFolderStructuredContents.items.length);
-         if(contentlistdata.structuredContentFolderStructuredContents.items.length == 1) myContext.setContentID(contentlistdata.structuredContentFolderStructuredContents.items[0].id);
-         if(contentlistdata.structuredContentFolderStructuredContents.items.length == 0) myContext.setContentID(0);
+         if(contentlistdata.structuredContentFolderStructuredContents.items.length !== 0) {myContent.newtext(arr1[0].id, arr1[0].text, contentlistdata.structuredContentFolderStructuredContents.items[0].contentFields)};
+         if(contentlistdata.structuredContentFolderStructuredContents.items.length == 0) myContent.newtext('', '', '');
         }
     });
 
@@ -150,7 +153,7 @@ function SelectProject() {
     if (contenterror) return <p>Loading error! ${contenterror.message}</p>;
 
     if (tagsloading) return <p>Loading...</p>;
-    if (tagserror) return <><Alert variant='info'>Please select a project</Alert>;
+    if (tagserror) return <>
 
     <div className="settings">
       <DropdownButton  size="sm" id="dropdown-item-button" title={myContext.state.FolderName}>
@@ -165,10 +168,10 @@ function SelectProject() {
     }
     </DropdownButton>
     </div>
-  </>;
+  </>
 
     if (contentlistloading) return <p>Loading...</p>;
-    if (contentlisterror) return <Alert variant='info'>Please select a project</Alert>;
+    if (contentlisterror) return <Alert variant='info'>Please select a project</Alert>
 
   
     //console.log(tagsdata);
