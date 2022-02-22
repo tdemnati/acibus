@@ -13,6 +13,7 @@ query FolderstructuredContents($folderID: Long!){
     items {
       id
       title
+      keywords
       contentStructureId
       contentFields {
         label
@@ -58,16 +59,16 @@ function StructuredContentList() {
     <>
       {myContext.state.isSelectedProject ? "":
       <div>
-            {data.structuredContentFolderStructuredContents.items.map(({ id, contentFields}) => (
+            {myContext.state.contentList.map(({ id, status, text, contentFields}) => (
             <li key={id}>
               {/* {id}: {title} */}
-              <div className="Settings">
-              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, contentFields[0].contentFieldValue.data, contentFields)} className="mylist">
-              {contentFields[0].contentFieldValue.data}
+              <div className="settings">
+              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, text, contentFields)} className="mylist">
+              {text}
               </p>
-              <p>
-                
-              </p>
+              {status == "accepted" ? <i className="bi bi-check"></i>: ""
+              
+            }
               </div>
             </li>))}
       </div>

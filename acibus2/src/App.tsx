@@ -12,7 +12,6 @@ import AcibusNavBar from './Components/AcibusNavBar';
 import AcceptButton from './Components/AcceptButton';
 import RetrieveGuideline from './Components/RetrieveGuideline';
 import AcibusSideBar from './Components/AcibusSideBar';
-import ProjectManager from './Components/ProjectManager';
 
 class App extends React.Component<any, any> {
 
@@ -28,7 +27,7 @@ class App extends React.Component<any, any> {
       <Row>
         <AcibusSideBar/>
         <br />
-        <Col xs={3}>
+        <Col xs={5}>
           <Card>
           <Card.Header>Choose a Tag</Card.Header>
             <Card.Body>
@@ -50,7 +49,7 @@ class App extends React.Component<any, any> {
             </Card.Body>
           </Card>
         </Col>
-        <Col  xs={5}>
+        <Col  xs={3}>
         <Card>
             <Card.Body>
         <RetrieveGuideline/>

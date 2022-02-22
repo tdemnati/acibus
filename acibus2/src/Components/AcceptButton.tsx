@@ -122,7 +122,7 @@ function AcceptButton() {
         structuredContentId: $myID
         structuredContent: {
           contentStructureId: 66167
-          title: "My Content"
+          title: "Content"
           keywords: ["ACCEPTED"]
           contentFields: $mysContentfields
         }
@@ -130,6 +130,7 @@ function AcceptButton() {
         id
         contentStructureId
         title
+        keywords
         contentFields {
           name
           contentFieldValue {
@@ -172,15 +173,15 @@ let mysContentfieldsEND = [
       
 {end == 0 ? <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <Button size="sm" onClick={() => {
+        <Button variant="success" onClick={() => {
           updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfieldsEND}});
-        }}>ACCEPT</Button>
+        }}><i className="bi bi-check"></i></Button>
         </>:
 <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <Button size="sm" onClick={() => {
+        <Button variant="success" onClick={() => {
           updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfields}});
-        }}>ACCEPT</Button>
+        }}><i className="bi bi-check"></i></Button>
         </>
 }
 </>

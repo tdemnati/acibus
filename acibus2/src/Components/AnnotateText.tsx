@@ -16,9 +16,9 @@ class AnnotateText extends React.Component<any, any>{
 {context.state.isSelectedProject ? "":
               <TokenAnnotator
                   style={{
-                    fontFamily: 'IBM Plex Sans',
-                    maxWidth: 500,
-                    lineHeight: 1.5,
+                    whiteSpace: 'pre-wrap',
+                    lineHeight: 2.2,
+                    wordWrap: 'break-word'
                   }}
                   tokens={contentcontext.state.TEXT.split(' ')}
                   value={contentcontext.state.value}

@@ -53,7 +53,7 @@ function SaveContentButton() {
         structuredContentId: ${myID}
         structuredContent: {
           contentStructureId: 66167
-          title: "My Content"
+          title: "Content"
           ${formatedValue}
         }
       ) {

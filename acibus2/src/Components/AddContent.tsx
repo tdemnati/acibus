@@ -56,11 +56,12 @@ function AddContent() {
     const [createStructuredContentFolderStructuredContent, {data: contentdata, loading, error}] = useMutation(ADD_FOLDER_STRUCTURED_CONTENT, {
       refetchQueries: [{query: GET_STRUCTURED_CONTENTS, 
         variables: {folderID: projectcontext.state.FolderID,
+        contentTEXT: "placeholder"}}],
         onCompleted: contentdata => {
-          //contentcontext.newtext(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, contentdata.createStructuredContentFolderStructuredContent.contentFields);
+          contentcontext.newtext(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, '');
+          projectcontext.addContent(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, '');
           console.log(contentdata);
         },
-        contentTEXT: "placeholder"}}],
       awaitRefetchQueries: true,
     });
 

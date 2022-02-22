@@ -41,6 +41,7 @@ return (
   setContentList:(mycontentlist) =>{
     this.setState({contentList: mycontentlist}, () => console.log(this.state.contentList))
   },
+  addContent: (myid, mytext, myvalue) => {this.setState({contentList: [...this.state.contentList, {id: myid, text: mytext, contentFields: myvalue}]})},
   onSelectProject: (id, name) => {
     this.setState({FolderID: id}, ()=>console.log(this.state.FolderID));
     this.setState({FolderName: name}, ()=>console.log(this.state.FolderName));
