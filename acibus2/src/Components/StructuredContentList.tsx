@@ -36,7 +36,7 @@ nestedContentFields {
   }
 } 
 `;
- 
+
 
 function StructuredContentList() {
   const contentcontext = useContext(ContentContext);
@@ -54,6 +54,8 @@ function StructuredContentList() {
   if (error) return <Alert variant='info'>You'll find here the list of content once you've selected a project</Alert>;
   //console.log(data);
 
+  const idlist = myContext.state.contentList.map(e => e.id);
+  console.log(idlist);
 
   return (
     <>
@@ -63,7 +65,7 @@ function StructuredContentList() {
             <li key={id}>
               {/* {id}: {title} */}
               <div className="settings">
-              <p id={id.toString()} key={uuidv4()} onClick={() => contentcontext.newtext(id, text, contentFields)} className="mylist">
+              <p id={id.toString()} key={uuidv4()} onClick={() => {contentcontext.newtext(id, text, contentFields);console.log("The index is:" + idlist.indexOf(id))}} className="mylist">
               {text}
               </p>
               {status == "accepted" ? <i className="bi bi-check"></i>: ""

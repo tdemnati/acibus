@@ -147,7 +147,13 @@ function AcceptButton() {
     }
 `;
 //console.log(UPDATE_STRUCTURED_CONTENT);
-    const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT);
+    const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT,
+      {
+        onCompleted: data => {
+          data.updateStructuredContent.keywords.toString()
+        }
+      
+      });
 
     if (loading) return <Spinner animation="border" role="status">
     <span className="visually-hidden">Loading...</span>

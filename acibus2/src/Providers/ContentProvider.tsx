@@ -9,6 +9,8 @@ class ContentProvider extends React.Component{
     value: [],
     StructuredContentID: '42',
     TEXT: '',
+    status:'',
+    contentIndex:'',
     LIST: []
   }
   
