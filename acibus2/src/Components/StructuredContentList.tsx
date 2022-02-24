@@ -55,7 +55,7 @@ function StructuredContentList() {
   //console.log(data);
 
   const idlist = myContext.state.contentList.map(e => e.id);
-  console.log(idlist);
+  //console.log(idlist);
 
   return (
     <>
@@ -65,7 +65,7 @@ function StructuredContentList() {
             <li key={id}>
               {/* {id}: {title} */}
               <div className="settings">
-              <p id={id.toString()} key={uuidv4()} onClick={() => {contentcontext.newtext(id, text, contentFields);console.log("The index is:" + idlist.indexOf(id))}} className="mylist">
+              <p id={id.toString()} key={uuidv4()} onClick={() => {contentcontext.newtext(id, text, contentFields);contentcontext.setContentIndex(idlist.indexOf(id))}} className="mylist">
               {text}
               </p>
               {status == "accepted" ? <i className="bi bi-check"></i>: ""

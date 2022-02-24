@@ -23,7 +23,15 @@ return (
       onSelectText: value => {this.setState({value})},
       getfolderlist: (value) => {
         this.setState({LIST: value});
-        console.log(this.state.LIST)
+        console.log(this.state.LIST);
+      },
+      setContentIndex: (index) => {
+        this.setState({contentIndex: index});
+        console.log(this.state.contentIndex);
+      },
+      setStatus: (mystatus) => {
+        this.setState({status: mystatus});
+        console.log(this.state.status);
       },
       newtext: (id, text, myvalue) => {
         this.setState({TEXT: text});

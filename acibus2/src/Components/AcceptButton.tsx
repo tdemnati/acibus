@@ -150,7 +150,11 @@ function AcceptButton() {
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT,
       {
         onCompleted: data => {
-          data.updateStructuredContent.keywords.toString()
+          const mystatus = data.updateStructuredContent.keywords.toString();
+          myContext.setStatus(mystatus);
+          console.log(myContext.state.status);
+          projectContext.state.contentList[myContext.state.contentIndex].status = mystatus;
+          console.log(projectContext.state.contentList[myContext.state.contentIndex].status);
         }
       
       });
