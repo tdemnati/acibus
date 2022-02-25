@@ -22,23 +22,17 @@ return (
       state: this.state,
       onSelectText: value => {this.setState({value})},
       getfolderlist: (value) => {
-        this.setState({LIST: value});
-        console.log(this.state.LIST);
+        this.setState({LIST: value}, () => console.log(this.state.LIST));
       },
       setContentIndex: (index) => {
-        this.setState({contentIndex: index});
-        console.log(this.state.contentIndex);
+        this.setState({contentIndex: index}, () => console.log(this.state.contentIndex));
       },
       setStatus: (mystatus) => {
-        this.setState({status: mystatus});
-        console.log(this.state.status);
+        this.setState({status: mystatus}, () => console.log(this.state.status));
       },
       newtext: (id, text, myvalue) => {
-        this.setState({TEXT: text});
-        this.setState({StructuredContentID: id});
-        console.log('The Text is: ' + text);
-        console.log('The ID is: ' + id);
-        
+        this.setState({TEXT: text}, () => console.log('The Text is: ' + this.state.TEXT));
+        this.setState({StructuredContentID: id}, () => console.log('The ID is: ' + this.state.StructuredContentID));        
         var array =[];
         var n = myvalue.length;
         //console.log(myvalue);

@@ -1,7 +1,7 @@
 import ContentContext from '../Providers/ContentProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
-import { Alert, Button, Spinner } from 'react-bootstrap';
+import { Alert, Button, ButtonGroup, Spinner } from 'react-bootstrap';
 import ProjectContext from '../Providers/ProjectProvider';
 
 
@@ -117,13 +117,13 @@ function AcceptButton() {
     //console.log(myContentfields.contentFields);
     let mysContentfields = myContentfields.contentFields;
     const UPDATE_STRUCTURED_CONTENT = gql`
-    mutation MyUpdateStructuredContent($myID: Long!, $mysContentfields: [InputContentField]){
+    mutation MyUpdateStructuredContent($keywords: String!, $myID: Long!, $mysContentfields: [InputContentField]){
       updateStructuredContent(
         structuredContentId: $myID
         structuredContent: {
           contentStructureId: 66167
           title: "Content"
-          keywords: ["ACCEPTED"]
+          keywords: [$keywords]
           contentFields: $mysContentfields
         }
       ) {
@@ -150,11 +150,21 @@ function AcceptButton() {
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT,
       {
         onCompleted: data => {
-          const mystatus = data.updateStructuredContent.keywords.toString();
+          let mystatus = data.updateStructuredContent.keywords.toString();
+          if (mystatus == undefined) {mystatus = ""}
+
           myContext.setStatus(mystatus);
-          console.log(myContext.state.status);
+          //console.log(myContext.state.status);
           projectContext.state.contentList[myContext.state.contentIndex].status = mystatus;
-          console.log(projectContext.state.contentList[myContext.state.contentIndex].status);
+          //console.log(projectContext.state.contentList[myContext.state.contentIndex].status);
+
+          let count = myContext.state.contentIndex;
+          console.log("The index is:" + count);
+
+          myContext.setContentIndex(count+1);
+          myContext.newtext(projectContext.state.contentList[myContext.state.contentIndex].id, projectContext.state.contentList[myContext.state.contentIndex].text, projectContext.state.contentList[myContext.state.contentIndex].contentFields);
+          myContext.setStatus(projectContext.state.contentList[myContext.state.contentIndex].status);
+          
         }
       
       });
@@ -181,17 +191,34 @@ let mysContentfieldsEND = [
     return (
       <>
       
-{end == 0 ? <>
+{end === 0 ? <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <Button variant="success" onClick={() => {
-          updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfieldsEND}});
-        }}><i className="bi bi-check"></i></Button>
+        <ButtonGroup>
+        <Button variant="success" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-check"></i>Accept</Button>
+        <Button variant="warning" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-x"></i>Reject</Button>
+        <Button variant="dark" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-dash-circle"></i> Ignore</Button>
+        </ButtonGroup>
         </>:
 <>
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
-        <Button variant="success" onClick={() => {
-          updateStructuredContent({ variables: { myID: myID, mysContentfields:mysContentfields}});
-        }}><i className="bi bi-check"></i></Button>
+        
+        <ButtonGroup>
+        <Button variant="success" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-check"></i>Accept</Button>
+        <Button variant="warning" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-x"></i>Reject</Button>
+        <Button variant="dark" style={{marginLeft: 10}} onClick={() => {
+          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:mysContentfieldsEND}});
+        }}><i className="bi bi-dash-circle"></i> Ignore</Button>
+        </ButtonGroup>
         </>
 }
 </>
