@@ -112,8 +112,8 @@ function SelectProject() {
             )
             );
          myContext.setTagList(arr);
-         console.log(tagsdata);
-         console.log(tagsdata.structuredContentFolderStructuredContents.items.length);
+         //console.log(tagsdata);
+         //console.log(tagsdata.structuredContentFolderStructuredContents.items.length);
          if(tagsdata.structuredContentFolderStructuredContents.items.length == 1) myContext.setTagListID(tagsdata.structuredContentFolderStructuredContents.items[0].id);
          if(tagsdata.structuredContentFolderStructuredContents.items.length == 0) myContext.setTagListID(0);
         }
@@ -141,9 +141,13 @@ function SelectProject() {
 
             );
          myContext.setContentList(arr1);
-         console.log(contentlistdata);
-         console.log(contentlistdata.structuredContentFolderStructuredContents.items.length);
-         if(contentlistdata.structuredContentFolderStructuredContents.items.length !== 0) {myContent.newtext(arr1[0].id, arr1[0].text, contentlistdata.structuredContentFolderStructuredContents.items[0].contentFields)};
+         //console.log(contentlistdata);
+         //console.log(contentlistdata.structuredContentFolderStructuredContents.items.length);
+         if(contentlistdata.structuredContentFolderStructuredContents.items.length !== 0) {
+           myContent.newtext(arr1[0].id, arr1[0].text, contentlistdata.structuredContentFolderStructuredContents.items[0].contentFields);
+           myContent.setStatus(arr1[0].status);
+           myContent.setContentIndex(0);
+          };
          if(contentlistdata.structuredContentFolderStructuredContents.items.length == 0) myContent.newtext('', '', '');
         }
     });
@@ -162,7 +166,7 @@ function SelectProject() {
             key={id}
             eventKey={id}
             value={name}
-            onClick={() => {{myContext.onSelectProject(id, name);myContext.showProject()}}}
+            onClick={() => {{myContext.onSelectProject(id, name);myContext.showProject();}}}
             >{name}</Dropdown.Item>
         ))
     }

@@ -2,7 +2,6 @@ import ProjectContext from '../Providers/ProjectProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Alert, Button, Form, Spinner } from 'react-bootstrap';
-import { GET_STRUCTURED_CONTENTS } from './StructuredContentList';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { GET_GUIDELINES } from './RetrieveGuideline';

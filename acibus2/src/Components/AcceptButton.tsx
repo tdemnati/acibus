@@ -153,18 +153,34 @@ function AcceptButton() {
           let mystatus = data.updateStructuredContent.keywords.toString();
           if (mystatus == undefined) {mystatus = ""}
 
+          let count = myContext.state.contentIndex;
+
           myContext.setStatus(mystatus);
+          //console.log("list length is:" + projectContext.state.contentList.length);
           //console.log(myContext.state.status);
-          projectContext.state.contentList[myContext.state.contentIndex].status = mystatus;
+          //console.log("mystatus is :" + projectContext.state.contentList[myContext.state.contentIndex].status);
+ 
+          projectContext.state.contentList[count].status = mystatus;
           //console.log(projectContext.state.contentList[myContext.state.contentIndex].status);
 
-          let count = myContext.state.contentIndex;
-          console.log("The index is:" + count);
+          console.log("The initial index is :" + count);
 
-          myContext.setContentIndex(count+1);
-          myContext.newtext(projectContext.state.contentList[myContext.state.contentIndex].id, projectContext.state.contentList[myContext.state.contentIndex].text, projectContext.state.contentList[myContext.state.contentIndex].contentFields);
-          myContext.setStatus(projectContext.state.contentList[myContext.state.contentIndex].status);
-          
+          if (count < projectContext.state.contentList.length-1) {
+            console.log("My Count is" + count)
+          myContext.setStatus(projectContext.state.contentList[count].status);
+          count = count + 1;
+          myContext.setContentIndex(count);
+          myContext.newtext(projectContext.state.contentList[count].id, projectContext.state.contentList[count].text, projectContext.state.contentList[count].contentFields);
+          }
+          else if (count == projectContext.state.contentList.length-1) {
+            console.log("My Count is " + count)
+          myContext.setStatus(projectContext.state.contentList[count].status);
+          myContext.setContentIndex(0);
+          myContext.newtext(projectContext.state.contentList[0].id, projectContext.state.contentList[0].text, projectContext.state.contentList[0].contentFields);
+          }
+          else {
+          //console.log("There is a BUG")
+          }
         }
       
       });

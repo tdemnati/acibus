@@ -2,7 +2,7 @@ import ProjectContext from '../Providers/ProjectProvider';
 import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Button, Form } from 'react-bootstrap';
-import { GET_STRUCTURED_CONTENTS } from './StructuredContentList';
+import { GET_STRUCTURED_CONTENTS } from './SelectProject';
 import ContentContext from '../Providers/ContentProvider';
 
 function AddContent() {
