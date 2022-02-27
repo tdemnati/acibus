@@ -73,7 +73,8 @@ nestedContentFields {
         nestedContentFields {
           contentFieldValue {
             data
-          }}
+          }
+        }
 }
       }
     }
