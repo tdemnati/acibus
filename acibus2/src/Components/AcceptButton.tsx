@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { gql, useMutation } from '@apollo/react-hoc';
 import { Alert, Button, ButtonGroup, Spinner } from 'react-bootstrap';
 import ProjectContext from '../Providers/ProjectProvider';
+import { GET_STRUCTURED_CONTENTS } from './SelectProject';
 
 
  
@@ -137,9 +138,13 @@ function AcceptButton() {
             data
           }
           nestedContentFields {
-            name
             contentFieldValue {
               data
+            }
+            nestedContentFields {
+              contentFieldValue {
+                data
+              }
             }
           }
         }
@@ -149,6 +154,9 @@ function AcceptButton() {
 //console.log(UPDATE_STRUCTURED_CONTENT);
     const [updateStructuredContent, {data, loading, error}] = useMutation(UPDATE_STRUCTURED_CONTENT,
       {
+        refetchQueries: [{query: GET_STRUCTURED_CONTENTS, 
+          variables: {folderID: projectContext.state.FolderID,
+          contentTEXT: "placeholder"}}],
         onCompleted: data => {
           let mystatus = data.updateStructuredContent.keywords.toString();
           if (mystatus == undefined) {mystatus = ""}
@@ -161,9 +169,14 @@ function AcceptButton() {
           //console.log("mystatus is :" + projectContext.state.contentList[myContext.state.contentIndex].status);
  
           projectContext.state.contentList[count].status = mystatus;
+          projectContext.state.contentList[count].contentFields = data.updateStructuredContent.contentFields;
           //console.log(projectContext.state.contentList[myContext.state.contentIndex].status);
 
           console.log("The initial index is :" + count);
+          console.log(data.updateStructuredContent.contentFields);
+          myContext.newtext(data.updateStructuredContent.id, projectContext.state.contentList[count].text, data.updateStructuredContent.contentFields);
+          console.log(projectContext.state.contentList);
+          //myContext.newtext(data.updateStructuredContent.id, data.updateStructuredContent.contenFields[0].contentFieldValue.data, data.updateStructuredContent.contenFields);
 
           if (count < projectContext.state.contentList.length-1) {
             console.log("My Count is" + count)
@@ -173,8 +186,9 @@ function AcceptButton() {
           myContext.newtext(projectContext.state.contentList[count].id, projectContext.state.contentList[count].text, projectContext.state.contentList[count].contentFields);
           }
           else if (count == projectContext.state.contentList.length-1) {
-            console.log("My Count is " + count)
+          console.log("My Count is " + count)
           myContext.setStatus(projectContext.state.contentList[count].status);
+          //myContext.newtext(data.updateStructuredContent.id, projectContext.state.contentList[count].text, data.updateStructuredContent.contentFields);
           myContext.setContentIndex(0);
           myContext.newtext(projectContext.state.contentList[0].id, projectContext.state.contentList[0].text, projectContext.state.contentList[0].contentFields);
           }
@@ -204,6 +218,15 @@ let mysContentfieldsEND = [
     ]
   }
 ];
+
+let myCfield;
+if (end == 0) {
+  myCfield = mysContentfieldsEND;
+} else {
+  myCfield = mysContentfields;
+}
+
+
     return (
       <>
       
@@ -211,13 +234,13 @@ let mysContentfieldsEND = [
         <p>{JSON.stringify([...myContext.state.value], null, 2)}</p>
         <ButtonGroup>
         <Button variant="success" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-check"></i>Accept</Button>
         <Button variant="warning" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-x"></i>Reject</Button>
         <Button variant="dark" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-dash-circle"></i> Ignore</Button>
         </ButtonGroup>
         </>:
@@ -226,13 +249,13 @@ let mysContentfieldsEND = [
         
         <ButtonGroup>
         <Button variant="success" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "ACCEPTED", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-check"></i>Accept</Button>
         <Button variant="warning" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "REJECTED", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-x"></i>Reject</Button>
         <Button variant="dark" style={{marginLeft: 10}} onClick={() => {
-          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:mysContentfieldsEND}});
+          updateStructuredContent({ variables: { keywords: "VOID", myID: myID, mysContentfields:myCfield}});
         }}><i className="bi bi-dash-circle"></i> Ignore</Button>
         </ButtonGroup>
         </>

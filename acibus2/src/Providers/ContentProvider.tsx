@@ -99,8 +99,7 @@ return (
         //this.setState({MYVALUE: myvalue});
         //console.log('MY VALUE');
 
-        this.setState({value: array.slice(0,n-1)},
-          () => console.log(this.state.value));
+        this.setState({value: array.slice(0,n-1)}, () => console.log(this.state.value));
 
         //console.log('value');
         //console.log(this.state.value);
