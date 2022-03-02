@@ -177,7 +177,7 @@ function AcceptButton() {
           myContext.newtext(data.updateStructuredContent.id, projectContext.state.contentList[count].text, data.updateStructuredContent.contentFields);
           console.log(projectContext.state.contentList);
           //myContext.newtext(data.updateStructuredContent.id, data.updateStructuredContent.contenFields[0].contentFieldValue.data, data.updateStructuredContent.contenFields);
-
+          projectContext.setCounts();
           if (count < projectContext.state.contentList.length-1) {
             console.log("My Count is" + count)
           myContext.setStatus(projectContext.state.contentList[count].status);

@@ -1,3 +1,4 @@
+import { round } from 'lodash';
 import * as React from 'react';
 
 const ProjectContext = React.createContext(undefined!);
@@ -21,7 +22,14 @@ class ProjectProvider extends React.Component{
     guideLine:'',
     guideLineID:'',
     contentList : [],
-    contentID: "any"
+    contentID: "any",
+    accepted:'',
+    rejected:'',
+    void:'',
+    total:'',
+    perrejected:'',
+    pervoid:'',
+    peraccepted:'',
   }
   //Set initial taglist state
   initialtagList = [...this.state.tagList];
@@ -38,8 +46,60 @@ return (
   setContentID: (mycontentid) => {
     this.setState({contentID: mycontentid}, () => console.log(this.state.contentID));
   },
+  setCounts:() => {
+    
+    let countTotal = this.state.contentList.length;
+    this.setState({total: countTotal}, () => console.log(this.state.total));
+    console.log("Total count is: " + countTotal);
+
+    let isRejected = 'rejected';
+    let countRejected = this.state.contentList.filter((obj) => obj.status === isRejected).length;
+    let percRejected = round((countRejected / countTotal )*100);
+    this.setState({rejected: countRejected}, () => console.log(this.state.rejected));
+    this.setState({perrejected: percRejected}, () => console.log(this.state.perrejected));
+    console.log("Rejected count is: " + countRejected);
+  
+    let isAccepted = 'accepted';
+    let countAccepted = this.state.contentList.filter((obj) => obj.status === isAccepted).length;
+    let percAccepted = round((countAccepted / countTotal )*100);
+    this.setState({accepted: countAccepted}, () => console.log(this.state.accepted));
+    this.setState({peraccepted: percAccepted}, () => console.log(this.state.peraccepted));
+    console.log("Accepted count is: " + countAccepted);
+  
+    let isVoid = 'void';
+    let countVoid = this.state.contentList.filter((obj) => obj.status === isVoid).length;
+    let percVoid = round((countVoid / countTotal )*100);
+    this.setState({void: countVoid}, () => console.log(this.state.void));
+    this.setState({pervoid: percVoid}, () => console.log(this.state.pervoid));
+    console.log("Void count is: " + countVoid);
+
+  },
   setContentList:(mycontentlist) =>{
-    this.setState({contentList: mycontentlist}, () => console.log(this.state.contentList))
+    this.setState({contentList: mycontentlist}, () => console.log(this.state.contentList));
+
+    const countTotal = this.state.contentList.length;
+    this.setState({total: countTotal}, () => console.log(this.state.total));
+    console.log("Total count is: " + countTotal);
+    let isRejected = 'rejected';
+    let countRejected = this.state.contentList.filter((obj) => obj.status === isRejected).length;
+    let percRejected = round((countRejected / countTotal )*100);
+    this.setState({rejected: countRejected}, () => console.log(this.state.rejected));
+    this.setState({perrejected: percRejected}, () => console.log(this.state.perrejected));
+    console.log("Rejected count is: " + countRejected);
+  
+    let isAccepted = 'accepted';
+    let countAccepted = this.state.contentList.filter((obj) => obj.status === isAccepted).length;
+    let percAccepted = round((countAccepted / countTotal )*100);
+    this.setState({accepted: countAccepted}, () => console.log(this.state.accepted));
+    this.setState({peraccepted: percAccepted}, () => console.log(this.state.peraccepted));
+    console.log("Accepted count is: " + countAccepted);
+  
+    let isVoid = 'void';
+    let countVoid = this.state.contentList.filter((obj) => obj.status === isVoid).length;
+    let percVoid = round((countVoid / countTotal )*100);
+    this.setState({void: countVoid}, () => console.log(this.state.void));
+    this.setState({pervoid: percVoid}, () => console.log(this.state.pervoid));
+    console.log("Void count is: " + countVoid);
   },
   addContent: (myid, mytext, myvalue) => {this.setState({contentList: [...this.state.contentList, {id: myid, text: mytext, contentFields: myvalue}]})},
   onSelectProject: (id, name) => {
