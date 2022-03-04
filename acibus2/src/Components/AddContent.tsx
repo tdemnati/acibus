@@ -61,6 +61,7 @@ function AddContent() {
           contentcontext.newtext(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, '');
           projectcontext.addContent(contentdata.createStructuredContentFolderStructuredContent.id, contentdata.createStructuredContentFolderStructuredContent.contentFields[0].contentFieldValue.data, '');
           console.log(contentdata);
+          projectcontext.setCounts();
         },
       awaitRefetchQueries: true,
     });
