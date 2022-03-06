@@ -1,7 +1,8 @@
-import React, { useContext} from "react";
+import React, { useContext, useState} from "react";
 import ContentContext from '../Providers/ContentProvider';
 import ProjectContext from '../Providers/ProjectProvider';
 import { v4 as uuidv4 } from 'uuid';
+import { ListGroup } from "react-bootstrap";
 
 
 function StructuredContentList() {
@@ -14,20 +15,24 @@ function StructuredContentList() {
   return (
     <>
       {myContext.state.isSelectedProject ? "":
-      <div>
+      <ListGroup variant="flush">
             {myContext.state.contentList.map(({ id, status, text, contentFields}) => (
-            <li key={id}>
+            <ListGroup.Item
+            action 
+            key={id} 
+            variant="secondary-primary"
+            onClick={() => {contentcontext.newtext(id, text, contentFields);contentcontext.setContentIndex(idlist.indexOf(id))}} >
               {/* {id}: {title} */}
               <div className="settings">
-              <p id={id.toString()} key={uuidv4()} onClick={() => {contentcontext.newtext(id, text, contentFields);contentcontext.setContentIndex(idlist.indexOf(id))}} className="mylist">
+              <p id={id.toString()} key={uuidv4()} className="mylist">
               {text}
               </p>
               {status == "accepted" ? <i className="bi bi-check"></i>:""}
               {status == "rejected" ? <i className="bi bi-x"></i>: ""}
               {status == "void" ? <i className="bi bi-dash-circle"></i>: ""}
               </div>
-            </li>))}
-      </div>
+            </ListGroup.Item>))}
+      </ListGroup>
     }
     </>
     

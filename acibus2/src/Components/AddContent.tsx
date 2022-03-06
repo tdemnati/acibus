@@ -87,7 +87,7 @@ function AddContent() {
        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
     <Form.Control ref={node => {
             inputcontentTEXT = node;
-          }} size="sm" as="textarea" rows={3} placeholder="New Content" required/>
+          }} size="sm" as="textarea" rows={3} placeholder="Copy / Paste some text" required/>
     </Form.Group>
     <Button  size="sm" type="submit">Add Content</Button>
     </Form>
